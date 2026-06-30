@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RedLabs — Automatización con IA & Desarrollo Web</title>
+  <meta name="description" content="Automatizamos tu negocio con inteligencia artificial y construimos tu presencia digital. Agentes de IA, flujos n8n, landing pages y sitios web." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav" id="nav">
+    <a href="#" class="nav__logo">RedLabs</a>
+    <div class="nav__links">
+      <a href="#servicios">Servicios</a>
+      <a href="#combos">Combos</a>
+      <a href="#web">Web</a>
+      <a href="#proceso">Proceso</a>
+      <a href="#contacto" class="nav__cta">Hablar con nosotros</a>
+    </div>
+    <button class="nav__burger" id="burger" aria-label="Menú">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="#servicios" class="mobile-link">Servicios</a>
+    <a href="#combos" class="mobile-link">Combos</a>
+    <a href="#web" class="mobile-link">Web</a>
+    <a href="#proceso" class="mobile-link">Proceso</a>
+    <a href="#contacto" class="mobile-link mobile-link--cta">Hablar con nosotros</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero__bg-grid"></div>
+    <div class="hero__content reveal">
+      <span class="hero__eyebrow">Automatización con IA · Desarrollo Web</span>
+      <h1 class="hero__title">
+        Tu negocio<br />
+        <em>trabajando solo</em><br />
+        mientras vos crecés.
+      </h1>
+      <p class="hero__subtitle">
+        Conectamos WhatsApp, Gmail, Google Sheets, modelos de lenguaje y más
+        en flujos automáticos que reemplazan tareas repetitivas.
+        También construimos tu presencia digital desde cero.
+      </p>
+      <div class="hero__actions">
+        <a href="#servicios" class="btn btn--primary">Ver servicios</a>
+        <a href="#contacto" class="btn btn--ghost">Pedir cotización</a>
+      </div>
+    </div>
+    <div class="hero__stats reveal">
+      <div class="stat">
+        <span class="stat__number">11</span>
+        <span class="stat__label">servicios predefinidos</span>
+      </div>
+      <div class="stat">
+        <span class="stat__number">6</span>
+        <span class="stat__label">combos disponibles</span>
+      </div>
+      <div class="stat">
+        <span class="stat__number">100%</span>
+        <span class="stat__label">margen neto</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTRO -->
+  <section class="intro">
+    <div class="container">
+      <div class="intro__grid">
+        <div class="intro__text reveal">
+          <h2>IA práctica,<br />sin frivolidades.</h2>
+          <p>No vendemos humo. Implementamos automatizaciones concretas sobre herramientas que ya usás: WhatsApp Business, Gmail, Google Drive, Sheets, Docs y modelos de lenguaje como GPT-4o. Todo orquestado con n8n y alojado en la nube.</p>
+          <p>Para landing pages y sitios web, construimos con <strong>Claude Code</strong> y Firebase — el mismo stack que usan las mejores agencias digitales hoy.</p>
+        </div>
+        <div class="intro__tools reveal">
+          <div class="tool-badge">WhatsApp</div>
+          <div class="tool-badge">Gmail</div>
+          <div class="tool-badge">Google Sheets</div>
+          <div class="tool-badge">Google Drive</div>
+          <div class="tool-badge">Google Docs</div>
+          <div class="tool-badge">Google Calendar</div>
+          <div class="tool-badge">GPT-4o</div>
+          <div class="tool-badge">Whisper</div>
+          <div class="tool-badge">n8n</div>
+          <div class="tool-badge">Meta API</div>
+          <div class="tool-badge">Instagram DMs</div>
+          <div class="tool-badge">Claude Code</div>
+          <div class="tool-badge">Firebase</div>
+          <div class="tool-badge">Notion</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICIOS -->
+  <section class="section" id="servicios">
+    <div class="container">
+      <div class="section__header reveal">
+        <span class="section__tag">Servicios</span>
+        <h2 class="section__title">Todo lo que podemos<br />automatizar para vos</h2>
+        <p class="section__subtitle">Dos modelos de contratación: <strong>alquiler</strong> (implementación reducida + cuota mensual) o <strong>compra</strong> (precio único, el flujo es tuyo). Elegís lo que mejor se adapta a tu negocio.</p>
+      </div>
+
+      <!-- Categoría Inmobiliaria -->
+      <div class="category reveal">
+        <div class="category__label">
+          <span class="category__icon">🏠</span>
+          Servicios Inmobiliarios
+        </div>
+        <div class="services-grid">
+
+          <div class="service-card reveal">
+            <div class="service-card__number">S01</div>
+            <h3 class="service-card__title">Chatbot de Consultas por WhatsApp</h3>
+            <p class="service-card__desc">Responde preguntas frecuentes, lee tu cartera desde Sheets, menú con botones y derivación a humano.</p>
+            <div class="service-card__tools">n8n · WhatsApp · Sheets · GPT-4o</div>
+            <div class="service-card__pricing">
+              <div class="price-row">
+                <span>Alquiler</span>
+                <span><strong>$150</strong> impl. + <strong>$35</strong>/mes</span>
+              </div>
+              <div class="price-row">
+                <span>Compra</span>
+                <span><strong>$350</strong> único</span>
+              </div>
+            </div>
+            <div class="service-card__addons">
+              <span class="addon">+ Audios (Whisper)</span>
+              <span class="addon">+ Imágenes (Vision)</span>
+              <span class="addon">+ PDFs</span>
+              <span class="addon">+ IA dinámica</span>
+            </div>
+          </div>
+
+          <div class="service-card reveal">
+            <div class="service-card__number">S02</div>
+            <h3 class="service-card__title">Captación y Calificación de Leads</h3>
+            <p class="service-card__desc">Flujo de preguntas clave por WhatsApp. Guarda datos en Sheets y notifica al asesor con un resumen del lead.</p>
+            <div class="service-card__tools">n8n · WhatsApp · Sheets · Notion</div>
+            <div class="service-card__pricing">
+              <div class="price-row">
+                <span>Alquiler</span>
+                <span><strong>$180</strong> impl. + <strong>$40</strong>/mes</span>
+              </div>
+              <div class="price-row">
+                <span>Compra</span>
+                <span><strong>$400</strong> único</span>
+              </div>
+            </div>
+            <div class="service-card__addons">
+              <span class="addon">+ Scoring automático</span>
+              <span class="addon">+ CRM Notion</span>
+              <span class="addon">+ Propiedad sugerida</span>
+            </div>
+          </div>
+
+          <div class="service-card reveal">
+            <div class="service-card__number">S03</div>
+            <h3 class="service-card__title">Seguimiento Automático de Leads</h3>
+            <p class="service-card__desc">Mensajes automáticos a las 24, 48 y 72 horas. Personalizados. El asesor puede pausar o activar.</p>
+            <div class="service-card__tools">n8n · WhatsApp · Sheets</div>
+            <div class="service-card__pricing">
+              <div class="price-row">
+                <span>Alquiler</span>
+                <span><strong>$150</strong> impl. + <strong>$30</strong>/mes</span>
+              </div>
+              <div class="price-row">
+                <span>Compra</span>
+                <span><strong>$320</strong> único</span>
+              </div>
+            </div>
+            <div class="service-card__addons">
+              <span class="addon">+ Secuencia extendida (5-14 días)</span>
+              <span class="addon">+ A/B testing</span>
+            </div>
+          </div>
+
+          <div class="service-card reveal">
+            <div class="service-card__number">S04</div>
+            <h3 class="service-card__title">Publicación Automática en Redes</h3>
+            <p class="service-card__desc">Cargás la propiedad en Sheets, GPT genera texto con hashtags y se entrega listo o se publica directo vía Meta API.</p>
+            <div class="service-card__tools">n8n · Sheets · GPT-4o · Meta API</div>
+            <div class="service-card__pricing">
+              <div class="price-row">
+                <span>Alquiler</span>
+                <span><strong>$160</strong> impl. + <strong>$30</strong>/mes</span>
+              </div>
+              <div class="price-row">
+                <span>Compra</span>
+                <span><strong>$340</strong> único</span>
+              </div>
+            </div>
+            <div class="service-card__addons">
+              <span class="addon">+ Imagen IA (DALL-E)</span>
+              <span class="addon">+ 3 variantes de texto</span>
+              <span class="addon">+ Stories</span>
+            </div>
+          </div>
+
+          <div class="service-card service-card--featured reveal">
+            <div class="service-card__badge">Más complejo</div>
+            <div class="service-card__number">S05</div>
+            <h3 class="service-card__title">ACM Automatizado</h3>
+            <p class="service-card__desc">Análisis Comparativo de Mercado. Scrapea Zonaprop, Argenprop y MercadoLibre, analiza con IA y genera PDF con valuación.</p>
+            <div class="service-card__tools">n8n · Sheets · Apify · GPT-4o · Google Docs · Gmail</div>
+            <div class="service-card__pricing">
+              <div class="price-row">
+                <span>Alquiler</span>
+                <span><strong>$280</strong> impl. + <strong>$60</strong>/mes</span>
+              </div>
+              <div class="price-row">
+                <span>Compra</span>
+                <span><strong>$650</strong> único</span>
+              </div>
+            </div>
+            <div class="service-card__addons">
+              <span class="addon">+ Properati</span>
+              <span class="addon">+ Histórico $/m²</span>
+              <span class="addon">+ Google Slides</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Categoría General -->
+      <div class="category reveal">
+        <div class="category__label">
+          <span class="category__icon">🤝</span>
+          Servicios Generales
+        </div>
+        <div class="services-grid">
+
+          <div class="service-card reveal">
+            <div class="service-card__number">S06</div>
+            <h3 class="service-card__title">Respuesta Automática de Emails</h3>
+            <p class="service-card__desc">Clasifica emails entrantes, responde los frecuentes automáticamente y redirige los complejos al humano.</p>
+            <div class="service-card__tools">n8n · Gmail · GPT-4o</div>
+            <div class="service-card__pricing">
+              <div class="price-row">
+                <span>Alquiler</span>
+                <span><strong>$140</strong> impl. + <strong>$30</strong>/mes</span>
+              </div>
+              <div class="price-row">
+                <span>Compra</span>
+                <span><strong>$300</strong> único</span>
+              </div>
+            </div>
+            <div class="service-card__addons">
+              <span class="addon">+ IA dinámica</span>
+              <span class="addon">+ 8 categorías</span>
+              <span class="addon">+ Multiidioma</span>
+            </div>
+          </div>
+
+          <div class="service-card reveal">
+            <div class="service-card__number">S07</div>
+            <h3 class="service-card__title">Agenda de Turnos por WhatsApp</h3>
+            <p class="service-card__desc">El cliente elige día y hora por WhatsApp. Se registra en Google Calendar. Confirmación y recordatorio 24hs antes.</p>
+            <div class="service-card__tools">n8n · WhatsApp · Google Calendar</div>
+            <div class="service-card__pricing">
+              <div class="price-row">
+                <span>Alquiler</span>
+                <span><strong>$160</strong> impl. + <strong>$35</strong>/mes</span>
+              </div>
+              <div class="price-row">
+                <span>Compra</span>
+                <span><strong>$360</strong> único</span>
+              </div>
+            </div>
+            <div class="service-card__addons">
+              <span class="addon">+ Multi-agenda</span>
+              <span class="addon">+ Cancelación/reprogramación</span>
+            </div>
+          </div>
+
+          <div class="service-card reveal">
+            <div class="service-card__number">S08</div>
+            <h3 class="service-card__title">Resumen Diario de Novedades</h3>
+            <p class="service-card__desc">Cada mañana recibís por WhatsApp: turnos del día, leads nuevos, tareas pendientes, mensajes sin responder.</p>
+            <div class="service-card__tools">n8n · WhatsApp · Calendar · Sheets · Gmail</div>
+            <div class="service-card__pricing">
+              <div class="price-row">
+                <span>Alquiler</span>
+                <span><strong>$120</strong> impl. + <strong>$20</strong>/mes</span>
+              </div>
+              <div class="price-row">
+                <span>Compra</span>
+                <span><strong>$250</strong> único</span>
+              </div>
+            </div>
+            <div class="service-card__addons">
+              <span class="addon">+ Emails del día</span>
+              <span class="addon">+ Resumen semanal</span>
+            </div>
+          </div>
+
+          <div class="service-card reveal">
+            <div class="service-card__number">S09</div>
+            <h3 class="service-card__title">Registro de Gastos por WhatsApp</h3>
+            <p class="service-card__desc">Mandás texto o audio por WhatsApp. Se registra automáticamente en Sheets con monto, categoría, fecha y descripción.</p>
+            <div class="service-card__tools">n8n · WhatsApp · Sheets · Whisper</div>
+            <div class="service-card__pricing">
+              <div class="price-row">
+                <span>Alquiler</span>
+                <span><strong>$130</strong> impl. + <strong>$25</strong>/mes</span>
+              </div>
+              <div class="price-row">
+                <span>Compra</span>
+                <span><strong>$280</strong> único</span>
+              </div>
+            </div>
+            <div class="service-card__addons">
+              <span class="addon">+ Dashboard gráficos</span>
+              <span class="addon">+ Reporte mensual</span>
+              <span class="addon">+ Alertas de umbral</span>
+            </div>
+          </div>
+
+          <div class="service-card reveal">
+            <div class="service-card__number">S10</div>
+            <h3 class="service-card__title">Notificaciones y Alertas Personalizadas</h3>
+            <p class="service-card__desc">Alertas ante eventos definidos: email de cliente VIP, lead sin respuesta, turnos próximos, facturas vencidas.</p>
+            <div class="service-card__tools">n8n · Gmail · Sheets · Calendar · WhatsApp</div>
+            <div class="service-card__pricing">
+              <div class="price-row">
+                <span>Alquiler</span>
+                <span><strong>$110</strong> impl. + <strong>$20</strong>/mes</span>
+              </div>
+              <div class="price-row">
+                <span>Compra</span>
+                <span><strong>$230</strong> único</span>
+              </div>
+            </div>
+            <div class="service-card__addons">
+              <span class="addon">+ Hasta 10 reglas</span>
+              <span class="addon">+ Acción sugerida por IA</span>
+            </div>
+          </div>
+
+          <div class="service-card reveal">
+            <div class="service-card__number">S11</div>
+            <h3 class="service-card__title">FAQ Bot para Instagram DMs</h3>
+            <p class="service-card__desc">Responde mensajes directos frecuentes en Instagram. Deriva a WhatsApp cuando la consulta es compleja.</p>
+            <div class="service-card__tools">n8n · Instagram Messaging API · Meta · WhatsApp</div>
+            <div class="service-card__pricing">
+              <div class="price-row">
+                <span>Alquiler</span>
+                <span><strong>$150</strong> impl. + <strong>$30</strong>/mes</span>
+              </div>
+              <div class="price-row">
+                <span>Compra</span>
+                <span><strong>$320</strong> único</span>
+              </div>
+            </div>
+            <div class="service-card__addons">
+              <span class="addon">+ IA dinámica (GPT)</span>
+              <span class="addon">+ Catálogo Instagram</span>
+              <span class="addon">+ Registro en Sheets</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Nota de precios -->
+      <p class="pricing-note reveal">Precios en dólares estadounidenses. Cada addon suma $15 USD. Si el alcance supera los 30 nodos, cotizamos a medida.</p>
+    </div>
+  </section>
+
+  <!-- COMBOS -->
+  <section class="section section--dark" id="combos">
+    <div class="container">
+      <div class="section__header reveal">
+        <span class="section__tag">Combos</span>
+        <h2 class="section__title">Paquetes listos<br />para arrancar</h2>
+        <p class="section__subtitle">Servicios combinados con descuento. Elegís alquiler o compra.</p>
+      </div>
+      <div class="combos-grid">
+
+        <div class="combo-card reveal">
+          <div class="combo-card__tag">Inmobiliario</div>
+          <h3 class="combo-card__name">Inmobiliario Esencial</h3>
+          <p class="combo-card__desc">Para asesores independientes. Bot atiende, filtra y hace seguimiento solo.</p>
+          <ul class="combo-card__includes">
+            <li>S01 · Chatbot Consultas WhatsApp</li>
+            <li>S02 · Captación y Calificación de Leads</li>
+            <li>S03 · Seguimiento Automático de Leads</li>
+          </ul>
+          <div class="combo-card__pricing">
+            <div class="combo-price">
+              <span class="combo-price__label">Alquiler</span>
+              <span class="combo-price__value">$380 impl. + $85/mes</span>
+            </div>
+            <div class="combo-price">
+              <span class="combo-price__label">Compra</span>
+              <span class="combo-price__value">$850 único</span>
+            </div>
+            <div class="combo-price combo-price--saving">
+              <span class="combo-price__label">Ahorro</span>
+              <span class="combo-price__value">~$100 impl. + ~$20/mes</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="combo-card combo-card--highlighted reveal">
+          <div class="combo-card__tag combo-card__tag--featured">Más popular</div>
+          <h3 class="combo-card__name">Inmobiliario Pro</h3>
+          <p class="combo-card__desc">Para asesores o agencias que quieren automatizar toda la operación.</p>
+          <ul class="combo-card__includes">
+            <li>S01 · Chatbot Consultas WhatsApp</li>
+            <li>S02 · Captación y Calificación de Leads</li>
+            <li>S03 · Seguimiento Automático de Leads</li>
+            <li>S04 · Publicación en Redes</li>
+            <li>S08 · Resumen Diario</li>
+          </ul>
+          <div class="combo-card__pricing">
+            <div class="combo-price">
+              <span class="combo-price__label">Alquiler</span>
+              <span class="combo-price__value">$580 impl. + $130/mes</span>
+            </div>
+            <div class="combo-price">
+              <span class="combo-price__label">Compra</span>
+              <span class="combo-price__value">$1.300 único</span>
+            </div>
+            <div class="combo-price combo-price--saving">
+              <span class="combo-price__label">Ahorro</span>
+              <span class="combo-price__value">~$150 impl. + ~$40/mes</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="combo-card reveal">
+          <div class="combo-card__tag">Inmobiliario</div>
+          <h3 class="combo-card__name">Inmobiliario Pro + ACM</h3>
+          <p class="combo-card__desc">El más completo para inmobiliarias. Suma tasación automática para captaciones.</p>
+          <ul class="combo-card__includes">
+            <li>S01 · Chatbot Consultas WhatsApp</li>
+            <li>S02 · Captación y Calificación de Leads</li>
+            <li>S03 · Seguimiento Automático de Leads</li>
+            <li>S04 · Publicación en Redes</li>
+            <li>S05 · ACM Automatizado</li>
+            <li>S08 · Resumen Diario</li>
+          </ul>
+          <div class="combo-card__pricing">
+            <div class="combo-price">
+              <span class="combo-price__label">Alquiler</span>
+              <span class="combo-price__value">$780 impl. + $170/mes</span>
+            </div>
+            <div class="combo-price">
+              <span class="combo-price__label">Compra</span>
+              <span class="combo-price__value">$1.750 único</span>
+            </div>
+            <div class="combo-price combo-price--saving">
+              <span class="combo-price__label">Ahorro</span>
+              <span class="combo-price__value">~$200 impl. + ~$60/mes</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="combo-card reveal">
+          <div class="combo-card__tag">Profesionales</div>
+          <h3 class="combo-card__name">Asistente Personal</h3>
+          <p class="combo-card__desc">Para contadores, abogados, coaches, médicos. Delegan gestión operativa sin contratar personal.</p>
+          <ul class="combo-card__includes">
+            <li>S06 · Respuesta Automática de Emails</li>
+            <li>S07 · Agenda de Turnos WhatsApp</li>
+            <li>S08 · Resumen Diario</li>
+            <li>S10 · Alertas Personalizadas</li>
+          </ul>
+          <div class="combo-card__pricing">
+            <div class="combo-price">
+              <span class="combo-price__label">Alquiler</span>
+              <span class="combo-price__value">$420 impl. + $85/mes</span>
+            </div>
+            <div class="combo-price">
+              <span class="combo-price__label">Compra</span>
+              <span class="combo-price__value">$950 único</span>
+            </div>
+            <div class="combo-price combo-price--saving">
+              <span class="combo-price__label">Ahorro</span>
+              <span class="combo-price__value">~$110 impl. + ~$20/mes</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="combo-card reveal">
+          <div class="combo-card__tag">Negocios</div>
+          <h3 class="combo-card__name">Negocio Completo</h3>
+          <p class="combo-card__desc">Para dueños de pequeños negocios o autónomos. Atención, agenda, finanzas y alertas en un solo sistema.</p>
+          <ul class="combo-card__includes">
+            <li>S06 · Respuesta Automática de Emails</li>
+            <li>S07 · Agenda de Turnos WhatsApp</li>
+            <li>S08 · Resumen Diario</li>
+            <li>S09 · Registro de Gastos WhatsApp</li>
+            <li>S10 · Alertas Personalizadas</li>
+          </ul>
+          <div class="combo-card__pricing">
+            <div class="combo-price">
+              <span class="combo-price__label">Alquiler</span>
+              <span class="combo-price__value">$520 impl. + $100/mes</span>
+            </div>
+            <div class="combo-price">
+              <span class="combo-price__label">Compra</span>
+              <span class="combo-price__value">$1.150 único</span>
+            </div>
+            <div class="combo-price combo-price--saving">
+              <span class="combo-price__label">Ahorro</span>
+              <span class="combo-price__value">~$130 impl. + ~$30/mes</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="combo-card reveal">
+          <div class="combo-card__tag">Digital</div>
+          <h3 class="combo-card__name">Presencia Digital</h3>
+          <p class="combo-card__desc">Para negocios que quieren automatizar su comunicación digital sin esfuerzo diario.</p>
+          <ul class="combo-card__includes">
+            <li>S04 · Publicación en Redes</li>
+            <li>S06 · Respuesta Automática de Emails</li>
+            <li>S11 · FAQ Bot Instagram DMs</li>
+          </ul>
+          <div class="combo-card__pricing">
+            <div class="combo-price">
+              <span class="combo-price__label">Alquiler</span>
+              <span class="combo-price__value">$370 impl. + $75/mes</span>
+            </div>
+            <div class="combo-price">
+              <span class="combo-price__label">Compra</span>
+              <span class="combo-price__value">$820 único</span>
+            </div>
+            <div class="combo-price combo-price--saving">
+              <span class="combo-price__label">Ahorro</span>
+              <span class="combo-price__value">~$85 impl. + ~$15/mes</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PROYECTOS PERSONALIZADOS -->
+  <section class="section" id="personalizado">
+    <div class="container">
+      <div class="section__header reveal">
+        <span class="section__tag">Proyectos a medida</span>
+        <h2 class="section__title">¿No encontrás<br />lo que necesitás?</h2>
+        <p class="section__subtitle">Cotizamos cualquier automatización en tres niveles según complejidad.</p>
+      </div>
+      <div class="tiers-grid">
+        <div class="tier-card reveal">
+          <div class="tier-card__indicator tier-card__indicator--simple"></div>
+          <div class="tier-card__level">Simple</div>
+          <div class="tier-card__price">$200</div>
+          <div class="tier-card__price-label">implementación única</div>
+          <p class="tier-card__desc">Un solo flujo lineal. Una función principal. APIs simples: Gmail, Sheets, Calendar, WhatsApp. Sin scraping ni IA compleja.</p>
+          <div class="tier-card__example">"Bot WhatsApp que responde 3 preguntas y guarda en Sheets"</div>
+          <div class="tier-card__nodes">Hasta 8 nodos</div>
+        </div>
+        <div class="tier-card reveal">
+          <div class="tier-card__indicator tier-card__indicator--medio"></div>
+          <div class="tier-card__level">Medio</div>
+          <div class="tier-card__price">$450</div>
+          <div class="tier-card__price-label">implementación única</div>
+          <p class="tier-card__desc">Varios flujos conectados. Lógica condicional. 2 a 4 integraciones. Puede incluir IA básica para respuestas dinámicas.</p>
+          <div class="tier-card__example">"Captación leads + calificación + seguimiento 3 pasos"</div>
+          <div class="tier-card__nodes">Hasta 18 nodos</div>
+        </div>
+        <div class="tier-card reveal">
+          <div class="tier-card__indicator tier-card__indicator--complejo"></div>
+          <div class="tier-card__level">Complejo</div>
+          <div class="tier-card__price">$800</div>
+          <div class="tier-card__price-label">implementación única</div>
+          <p class="tier-card__desc">Múltiples flujos interdependientes. Scraping, IA integrada, 4+ APIs. Puede incluir base de datos externa o CRM simple.</p>
+          <div class="tier-card__example">"ACM completo: scraping 4 portales + análisis IA + PDF + email"</div>
+          <div class="tier-card__nodes">Hasta 30 nodos</div>
+        </div>
+        <div class="tier-card tier-card--quote reveal">
+          <div class="tier-card__level">Complejo+</div>
+          <div class="tier-card__price">Cotización</div>
+          <div class="tier-card__price-label">a medida</div>
+          <p class="tier-card__desc">Sistemas completos multi-flujo. Integraciones con CRMs externos. Alta personalización. Proyectos de largo aliento.</p>
+          <div class="tier-card__example">"Sistema integral agencia: CRM propio + bot + ACM + publicación + reportes"</div>
+          <div class="tier-card__nodes">+30 nodos</div>
+        </div>
+      </div>
+      <p class="pricing-note reveal">Cada función adicional que supere el límite de nodos del nivel suma <strong>$15 USD</strong>. Bot Redi cotiza hasta proyectos Complejos; lo que pase de ahí, lo tomamos nosotros directamente.</p>
+    </div>
+  </section>
+
+  <!-- WEB DEVELOPMENT -->
+  <section class="section section--dark" id="web">
+    <div class="container">
+      <div class="section__header reveal">
+        <span class="section__tag">Desarrollo Web</span>
+        <h2 class="section__title">Tu presencia digital,<br />construida con IA.</h2>
+        <p class="section__subtitle">Usamos <strong>Claude Code</strong> para desarrollar y <strong>Firebase</strong> para alojar. El mismo stack de las mejores agencias, a precio justo.</p>
+      </div>
+      <div class="web-grid">
+        <div class="web-card reveal">
+          <div class="web-card__icon">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect x="2" y="6" width="28" height="20" rx="3" stroke="currentColor" stroke-width="1.5"/><path d="M2 11h28" stroke="currentColor" stroke-width="1.5"/><circle cx="7" cy="8.5" r="1" fill="currentColor"/><circle cx="11" cy="8.5" r="1" fill="currentColor"/><circle cx="15" cy="8.5" r="1" fill="currentColor"/></svg>
+          </div>
+          <h3 class="web-card__title">Landing Page</h3>
+          <p class="web-card__desc">Página de una sola sección diseñada para convertir. Ideal para lanzar un producto, servicio o campaña. Rápida, responsive y optimizada para SEO.</p>
+          <ul class="web-card__features">
+            <li>Diseño custom (no templates)</li>
+            <li>Responsive mobile-first</li>
+            <li>Formulario de contacto</li>
+            <li>Integración WhatsApp</li>
+            <li>Alojada en Firebase Hosting</li>
+            <li>Dominio propio (opcional)</li>
+          </ul>
+          <div class="web-card__price">
+            <span class="web-card__price-value">A consultar</span>
+            <span class="web-card__price-note">Precio según alcance y diseño</span>
+          </div>
+          <a href="#contacto" class="btn btn--outline">Pedir cotización</a>
+        </div>
+
+        <div class="web-card web-card--featured reveal">
+          <div class="web-card__icon">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect x="2" y="2" width="12" height="12" rx="2" stroke="currentColor" stroke-width="1.5"/><rect x="18" y="2" width="12" height="12" rx="2" stroke="currentColor" stroke-width="1.5"/><rect x="2" y="18" width="12" height="12" rx="2" stroke="currentColor" stroke-width="1.5"/><rect x="18" y="18" width="12" height="12" rx="2" stroke="currentColor" stroke-width="1.5"/></svg>
+          </div>
+          <h3 class="web-card__title">Sitio Web Completo</h3>
+          <p class="web-card__desc">Sitio de múltiples páginas con diseño profesional. Perfecto para empresas, emprendimientos y profesionales que necesitan una presencia digital sólida.</p>
+          <ul class="web-card__features">
+            <li>Diseño y desarrollo completo</li>
+            <li>Múltiples páginas y secciones</li>
+            <li>Panel de administración (opcional)</li>
+            <li>Formularios e integraciones</li>
+            <li>Backend en Firebase</li>
+            <li>Automatizaciones conectadas (opcional)</li>
+            <li>SEO on-page incluido</li>
+          </ul>
+          <div class="web-card__price">
+            <span class="web-card__price-value">A consultar</span>
+            <span class="web-card__price-note">Precio según alcance y funcionalidades</span>
+          </div>
+          <a href="#contacto" class="btn btn--primary">Pedir cotización</a>
+        </div>
+      </div>
+
+      <div class="tech-stack reveal">
+        <h3 class="tech-stack__title">Stack tecnológico</h3>
+        <div class="tech-stack__items">
+          <div class="tech-item">
+            <div class="tech-item__name">Claude Code</div>
+            <div class="tech-item__desc">IA que programa. El mismo sistema que usa Anthropic internamente — velocidad de desarrollo imposible de igualar a mano.</div>
+          </div>
+          <div class="tech-item">
+            <div class="tech-item__name">Firebase Hosting</div>
+            <div class="tech-item__desc">CDN global de Google. Carga ultrarrápida, SSL automático, escalado sin límite.</div>
+          </div>
+          <div class="tech-item">
+            <div class="tech-item__name">Firebase Backend</div>
+            <div class="tech-item__desc">Firestore para base de datos, Auth para usuarios, Functions para lógica server. Sin servidor que mantener.</div>
+          </div>
+          <div class="tech-item">
+            <div class="tech-item__name">HTML · CSS · JS</div>
+            <div class="tech-item__desc">Código limpio, sin frameworks pesados. Carga en milisegundos, compatible con todo.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESO -->
+  <section class="section" id="proceso">
+    <div class="container">
+      <div class="section__header reveal">
+        <span class="section__tag">Proceso</span>
+        <h2 class="section__title">De la consulta<br />al flujo activo.</h2>
+      </div>
+      <div class="process-steps">
+        <div class="process-step reveal">
+          <div class="process-step__number">01</div>
+          <div class="process-step__content">
+            <h3>Consulta inicial</h3>
+            <p>Me contás qué proceso querés automatizar o qué sitio necesitás. Por WhatsApp o llamada. Sin formularios interminables.</p>
+          </div>
+        </div>
+        <div class="process-step reveal">
+          <div class="process-step__number">02</div>
+          <div class="process-step__content">
+            <h3>Cotización en 24 hs</h3>
+            <p>Evaluamos el alcance, te presentamos el servicio o nivel que mejor se adapta y el precio exacto con desglose claro.</p>
+          </div>
+        </div>
+        <div class="process-step reveal">
+          <div class="process-step__number">03</div>
+          <div class="process-step__content">
+            <h3>Implementación</h3>
+            <p>Implementamos el flujo o sitio. Para las automatizaciones, una videollamada de 30 min para conectar tus cuentas. Para el sitio, iteramos con vos hasta que quede perfecto.</p>
+          </div>
+        </div>
+        <div class="process-step reveal">
+          <div class="process-step__number">04</div>
+          <div class="process-step__content">
+            <h3>Activación y soporte</h3>
+            <p>El sistema queda activo. Para servicios en alquiler, mantenemos y actualizamos. Para compras, te entregamos todo y seguís solo (o con soporte opcional).</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section section--dark">
+    <div class="container">
+      <div class="section__header reveal">
+        <span class="section__tag">Preguntas frecuentes</span>
+        <h2 class="section__title">Lo que todos<br />preguntan primero.</h2>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item reveal">
+          <button class="faq-question">¿Cuál es la diferencia entre alquiler y compra?</button>
+          <div class="faq-answer">
+            <p>En el <strong>alquiler</strong>, pagás una implementación reducida + una cuota mensual. Si en algún momento dejás de pagar, el flujo se desactiva — el archivo queda con nosotros. Genera ingreso mensual recurrente para el negocio y es la opción más accesible para arrancar.</p>
+            <p>En la <strong>compra</strong>, pagás un precio único mayor y el flujo es tuyo. Si cancelás el mantenimiento (opcional), te entregamos el archivo .json y podés hacer lo que quieras con él.</p>
+          </div>
+        </div>
+        <div class="faq-item reveal">
+          <button class="faq-question">¿Necesito tener conocimientos técnicos?</button>
+          <div class="faq-answer">
+            <p>No. Nosotros nos ocupamos de todo lo técnico. Lo único que necesitás hacer es compartir acceso a tus cuentas (Gmail, WhatsApp Business, Google Calendar, etc.) mediante un proceso guiado. Nunca te pedimos tu contraseña — usamos OAuth seguro o API keys con permisos específicos.</p>
+          </div>
+        </div>
+        <div class="faq-item reveal">
+          <button class="faq-question">¿Mis datos están seguros?</button>
+          <div class="faq-answer">
+            <p>Sí. Cada integración usa los permisos mínimos necesarios. Las API keys solo controlan lo que necesitan (ej: la key de WhatsApp solo maneja mensajes de ese número, no tus contactos). Podés revocar cualquier acceso desde tu cuenta en cualquier momento.</p>
+          </div>
+        </div>
+        <div class="faq-item reveal">
+          <button class="faq-question">¿Qué pasa si necesito cambiar algo del flujo?</button>
+          <div class="faq-answer">
+            <p>Los clientes en alquiler tienen soporte incluido — cualquier ajuste o cambio lo manejamos nosotros. Los clientes en compra pueden contratar actualizaciones puntuales a precio acordado.</p>
+          </div>
+        </div>
+        <div class="faq-item reveal">
+          <button class="faq-question">¿Cuánto tarda en estar activo?</button>
+          <div class="faq-answer">
+            <p>Los servicios más simples están activos en 48-72 horas desde que confirmamos el pago y tenemos los accesos. Los proyectos complejos o personalizados pueden llevar 1-2 semanas según el alcance.</p>
+          </div>
+        </div>
+        <div class="faq-item reveal">
+          <button class="faq-question">¿Qué necesito para tener WhatsApp Business?</button>
+          <div class="faq-answer">
+            <p>Un número de teléfono dedicado (puede ser una SIM nueva o un número virtual) y una cuenta de 360dialog (gratuita para el cliente, o con costo de ~$5-15/mes según el plan). Nosotros te guiamos paso a paso para configurarlo en una videollamada.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA / CONTACTO -->
+  <section class="section cta-section" id="contacto">
+    <div class="container">
+      <div class="cta-block reveal">
+        <span class="section__tag">Contacto</span>
+        <h2 class="cta-block__title">Empezamos<br /><em>cuando vos quieras.</em></h2>
+        <p class="cta-block__subtitle">Contame qué proceso querés automatizar o qué sitio necesitás. Te respondo en menos de 24 horas con una propuesta concreta.</p>
+        <div class="cta-block__actions">
+          <a href="https://wa.me/5491100000000?text=Hola%2C%20vi%20tu%20sitio%20y%20quiero%20consultar%20sobre%20automatizaciones" class="btn btn--whatsapp" target="_blank" rel="noopener">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Escribir por WhatsApp
+          </a>
+          <a href="mailto:hola@redlabs.com.ar" class="btn btn--ghost">hola@redlabs.com.ar</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <span class="footer__logo">RedLabs</span>
+          <p class="footer__tagline">Automatización con IA & Desarrollo Web</p>
+        </div>
+        <div class="footer__links">
+          <a href="#servicios">Servicios de IA</a>
+          <a href="#combos">Combos</a>
+          <a href="#web">Desarrollo Web</a>
+          <a href="#proceso">Proceso</a>
+          <a href="#contacto">Contacto</a>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>© 2025 RedLabs. Todos los derechos reservados.</span>
+        <span>Hecho con Claude Code · Buenos Aires, Argentina</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
