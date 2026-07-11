@@ -1,47 +1,35 @@
 /* =============================================================
    REDLABS — main.js
-   Nav, revelado, scroll-story, demo de chat, ensamblado del
-   isotipo y carga diferida de la escena 3D del hero.
+   Nav, índice lateral, revelado, scroll-story (proceso),
+   demo de chat, ensamblado del isotipo del CTA, hint del hero
+   y carga diferida de la escena 3D.
    ============================================================= */
 
 const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
 
-/* ---------- NAV + progreso de scroll + riel de flujo ---------- */
+/* ---------- NAV + progreso + índice lateral ---------- */
 const nav = document.getElementById('nav');
 const progress = document.getElementById('scroll-progress');
-const rail = document.getElementById('flow-rail');
-const railFill = document.getElementById('flow-rail-fill');
-const railNodes = rail ? [...rail.querySelectorAll('.flow-node')] : [];
-// secciones que marca el riel, en orden
-const railSections = railNodes.map(n => document.getElementById(n.dataset.target));
-// la sección demo es de fondo claro: el riel debe invertirse ahí
-const paperSection = document.getElementById('demo');
+const indexNav = document.getElementById('index');
+const indexLinks = indexNav ? [...indexNav.querySelectorAll('a')] : [];
+const indexSections = indexLinks.map(a => document.getElementById(a.dataset.target));
 
-let progTick = false;
+let scrollTick = false;
 function onPageScroll() {
   nav.classList.toggle('scrolled', scrollY > 30);
-  if (progTick) return;
-  progTick = true;
+  if (scrollTick) return;
+  scrollTick = true;
   requestAnimationFrame(() => {
     const max = document.documentElement.scrollHeight - innerHeight;
     const p = max > 0 ? clamp(scrollY / max, 0, 1) : 0;
-
     if (progress) progress.style.transform = `scaleX(${p})`;
-    if (railFill) railFill.style.transform = `scaleY(${p})`;
 
-    // nodo activo: la última sección cuyo tope ya pasamos
-    const mid = scrollY + innerHeight * 0.42;
+    const mid = scrollY + innerHeight * 0.4;
     let active = 0;
-    railSections.forEach((sec, i) => { if (sec && sec.offsetTop <= mid) active = i; });
-    railNodes.forEach((n, i) => n.classList.toggle('on', i <= active));
-
-    // invertir el riel sobre la sección de fondo claro (demo)
-    if (rail && paperSection) {
-      const top = paperSection.offsetTop, bot = top + paperSection.offsetHeight;
-      rail.classList.toggle('on-light', mid >= top && mid < bot);
-    }
-    progTick = false;
+    indexSections.forEach((sec, i) => { if (sec && sec.offsetTop <= mid) active = i; });
+    indexLinks.forEach((a, i) => a.classList.toggle('on', i === active));
+    scrollTick = false;
   });
 }
 addEventListener('scroll', onPageScroll, { passive: true });
@@ -65,10 +53,10 @@ addEventListener('keydown', e => {
   if (e.key === 'Escape' && burger.getAttribute('aria-expanded') === 'true') setMenu(false);
 });
 
-/* ---------- Revelado al entrar (progresivo: sin JS no pasa nada) ---------- */
+/* ---------- Revelado al entrar ---------- */
 if (!reduced) {
   const targets = document.querySelectorAll(
-    '.qh-title, .qh-card, .qh-ej, .demo-title, .demo-lead, .demo-grid > *, ' +
+    '.svc-title, .svc-col, .svc-ej, .demo-title, .demo-lead, .demo-grid > *, ' +
     '.cta-title, .cta-sub, .cta-actions, .cta-form-wrap'
   );
   targets.forEach(el => el.classList.add('rv'));
@@ -85,10 +73,9 @@ if (!reduced) {
 }
 
 /* =============================================================
-   CÓMO TRABAJAMOS — historia guiada por scroll
-   (fondo oscuro → papel, línea que se dibuja, pasos que avanzan)
+   PROCESO — historia guiada por scroll (tinta → papel)
    ============================================================= */
-const ct = document.getElementById('como-trabajamos');
+const ct = document.getElementById('proceso');
 const ctSticky = document.getElementById('ct-sticky');
 const ctNum = document.getElementById('ct-num');
 const ctPath = document.getElementById('ct-path-fill');
@@ -100,9 +87,7 @@ if (!reduced && ctPath) {
   ctPath.style.strokeDasharray = pathLen;
   ctPath.style.strokeDashoffset = pathLen;
   const nodeAt = [.09, .42, .82];
-
-  // tinta #0B0908 → papel #FBFAF9
-  const c0 = [11, 9, 8], c1 = [251, 250, 249];
+  const c0 = [10, 9, 8], c1 = [250, 249, 247];
   let lastStep = -1;
 
   const update = () => {
@@ -134,9 +119,8 @@ if (!reduced && ctPath) {
   addEventListener('resize', update, { passive: true });
   update();
 } else {
-  // versión estática: todos los pasos visibles (CSS reduced-motion los apila)
   ctSteps.forEach(s => s.classList.add('active'));
-  ctSticky.style.backgroundColor = '#FBFAF9';
+  ctSticky.style.backgroundColor = '#FAF9F7';
   ctSticky.classList.add('light');
 }
 
@@ -188,7 +172,6 @@ function addMsg(text, who) {
   chatLog.scrollTo({ top: chatLog.scrollHeight, behavior: reduced ? 'auto' : 'smooth' });
   return div;
 }
-
 function addTyping() {
   const div = document.createElement('div');
   div.className = 'msg msg-bot msg-typing in';
@@ -198,11 +181,9 @@ function addTyping() {
   chatLog.scrollTo({ top: chatLog.scrollHeight, behavior: reduced ? 'auto' : 'smooth' });
   return div;
 }
-
 function nowHM() {
   return new Date().toLocaleTimeString('es-AR', { hour: '2-digit', minute: '2-digit', hour12: false });
 }
-
 function runBackstage(intent) {
   feed.innerHTML = '';
   intent.steps.forEach((label, i) => {
@@ -214,7 +195,6 @@ function runBackstage(intent) {
     feed.appendChild(li);
     setTimeout(() => li.classList.add('in'), 350 + i * 420);
   });
-  // fila en la planilla
   setTimeout(() => {
     const tr = document.createElement('tr');
     tr.className = 'sheet-row-new';
@@ -231,12 +211,10 @@ let greetTimers = [];
 function handleMessage(text) {
   if (busy || !text.trim()) return;
   busy = true;
-  // si el usuario se adelanta al saludo, no intercalamos mensajes
   greetTimers.forEach(clearTimeout);
   greetTimers = [];
   addMsg(text.trim(), 'user');
   const intent = INTENTS.find(i => i.match.test(text)) || FALLBACK;
-
   setTimeout(() => {
     const typing = addTyping();
     runBackstage(intent);
@@ -252,7 +230,6 @@ document.querySelectorAll('.sug').forEach(btn => {
   btn.addEventListener('click', () => handleMessage(btn.dataset.msg));
 });
 
-// saludo inicial cuando la demo entra en pantalla
 let greeted = false;
 new IntersectionObserver((entries, obs) => {
   if (!entries[0].isIntersecting || greeted) return;
@@ -287,7 +264,6 @@ if (cform) {
       status.textContent = '¡Listo! Nos llegó tu consulta. Te respondemos en menos de 24 horas.';
       status.classList.add('ok');
     } catch {
-      // si el envío directo falla, va por el POST clásico del form
       cform.submit();
     } finally {
       btn.disabled = false;
@@ -297,7 +273,7 @@ if (cform) {
 }
 
 /* =============================================================
-   CTA — el isotipo se ensambla: dos piezas que se conectan
+   CTA — el isotipo se ensambla al entrar
    ============================================================= */
 const ctaMark = document.getElementById('cta-mark');
 if (ctaMark && !reduced) {
@@ -307,10 +283,7 @@ if (ctaMark && !reduced) {
     { el: pieceR, x: -420, v: 0 },
     { el: pieceC, x: 420, v: 0 },
   ];
-  pieces.forEach(p => {
-    p.el.style.transform = `translateX(${p.x}px)`;
-    p.el.style.opacity = '0';
-  });
+  pieces.forEach(p => { p.el.style.transform = `translateX(${p.x}px)`; p.el.style.opacity = '0'; });
 
   let playing = false;
   const play = () => {
@@ -321,8 +294,7 @@ if (ctaMark && !reduced) {
       const dt = Math.min((now - last) / 1000, 1 / 30);
       last = now;
       let done = true;
-      pieces.forEach((p, i) => {
-        // resorte sub-amortiguado: se pasa un poco y vuelve
+      pieces.forEach(p => {
         const k = 52, d = 7.5;
         const acc = -k * p.x - d * p.v;
         p.v += acc * dt;
@@ -334,20 +306,19 @@ if (ctaMark && !reduced) {
       if (!done) requestAnimationFrame(tick);
       else pieces.forEach(p => { p.el.style.transform = ''; p.el.style.opacity = ''; });
     };
-    // la pieza del chevrón arranca con un pelín de retardo
     pieces[1].v = -60;
     requestAnimationFrame(tick);
   };
-
   new IntersectionObserver((entries, obs) => {
     if (entries[0].isIntersecting) { play(); obs.disconnect(); }
   }, { threshold: .45 }).observe(ctaMark);
 }
 
 /* =============================================================
-   HERO 3D — carga diferida, con fallback estático
+   HERO 3D — objeto interactivo, carga diferida + fallback
    ============================================================= */
 const hero = document.querySelector('.hero');
+const heroHint = document.getElementById('hero-hint');
 
 function supportsWebGL() {
   try {
@@ -363,3 +334,17 @@ if (reduced || !supportsWebGL()) {
     .then(m => m.initHero(document.getElementById('hero-canvas')))
     .catch(() => hero.classList.add('no3d'));
 }
+
+/* hint "arrastrá para girar": aparece, y se va al primer arrastre o solo */
+let hintTimer = null;
+addEventListener('rl:heroready', () => {
+  if (!heroHint) return;
+  heroHint.classList.add('show');
+  hintTimer = setTimeout(() => heroHint.classList.remove('show'), 5200);
+}, { once: true });
+addEventListener('rl:herodrag', () => {
+  if (!heroHint) return;
+  clearTimeout(hintTimer);
+  heroHint.classList.remove('show');
+  heroHint.classList.add('hide');
+}, { once: true });
