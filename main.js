@@ -7,11 +7,24 @@
 const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
 
-/* ---------- NAV ---------- */
+/* ---------- NAV + barra de progreso de scroll ---------- */
 const nav = document.getElementById('nav');
-addEventListener('scroll', () => {
+const progress = document.getElementById('scroll-progress');
+let progTick = false;
+function onPageScroll() {
   nav.classList.toggle('scrolled', scrollY > 30);
-}, { passive: true });
+  if (progress && !progTick) {
+    progTick = true;
+    requestAnimationFrame(() => {
+      const max = document.documentElement.scrollHeight - innerHeight;
+      progress.style.transform = `scaleX(${max > 0 ? clamp(scrollY / max, 0, 1) : 0})`;
+      progTick = false;
+    });
+  }
+}
+addEventListener('scroll', onPageScroll, { passive: true });
+addEventListener('resize', onPageScroll, { passive: true });
+onPageScroll();
 
 const burger = document.getElementById('burger');
 const mobileMenu = document.getElementById('mobile-menu');
@@ -313,7 +326,6 @@ if (ctaMark && !reduced) {
    HERO 3D — carga diferida, con fallback estático
    ============================================================= */
 const hero = document.querySelector('.hero');
-const heroChips = document.getElementById('hero-chips');
 
 function supportsWebGL() {
   try {
@@ -329,22 +341,3 @@ if (reduced || !supportsWebGL()) {
     .then(m => m.initHero(document.getElementById('hero-canvas')))
     .catch(() => hero.classList.add('no3d'));
 }
-
-/* chips de "automatización real" que emite la escena 3D */
-let chipTimer = null;
-addEventListener('rl:pulse', e => {
-  const { label, x, y } = e.detail;
-  heroChips.innerHTML = '';
-  clearTimeout(chipTimer);
-  const chip = document.createElement('span');
-  chip.className = 'hero-chip';
-  chip.textContent = label;
-  chip.style.left = clamp(x, 110, heroChips.clientWidth - 110) + 'px';
-  chip.style.top = clamp(y, 90, heroChips.clientHeight - 60) + 'px';
-  heroChips.appendChild(chip);
-  requestAnimationFrame(() => requestAnimationFrame(() => chip.classList.add('show')));
-  chipTimer = setTimeout(() => {
-    chip.classList.remove('show');
-    setTimeout(() => chip.remove(), 400);
-  }, 2600);
-});

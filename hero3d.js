@@ -1,14 +1,17 @@
 /* =============================================================
    REDLABS — hero3d.js
-   Escena WebGL del hero: herramientas cotidianas flotando en un
-   espacio oscuro, conectadas por líneas finas que convergen en el
-   isotipo. Todo se mueve con física de resorte, nada es lineal.
+   Escena WebGL del hero. El isotipo se ensambla desde sus dos
+   piezas y flota en un campo de puntos finos; unas pocas líneas
+   convergen en la marca y, cada tanto, una señal viaja por una
+   de ellas — la metáfora de la automatización, sin ruido visual.
+   Todo con física de resorte; nada lineal.
    ============================================================= */
 
 import * as THREE from './vendor/three.module.min.js';
 
 const RED = 0xEE2B24;
 const INK = 0x060505;
+const PAPER = 0xFBFAF9;
 
 /* resorte sub-amortiguado genérico */
 function spring(obj, key, target, k, d, dt) {
@@ -21,41 +24,10 @@ function spring(obj, key, target, k, d, dt) {
 
 const easeInOut = t => t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
 
-/* --------- geometrías con la lógica angular de la marca --------- */
-function roundedRectShape(w, h, r) {
-  const s = new THREE.Shape();
-  s.moveTo(-w / 2 + r, -h / 2);
-  s.lineTo(w / 2 - r, -h / 2); s.quadraticCurveTo(w / 2, -h / 2, w / 2, -h / 2 + r);
-  s.lineTo(w / 2, h / 2 - r); s.quadraticCurveTo(w / 2, h / 2, w / 2 - r, h / 2);
-  s.lineTo(-w / 2 + r, h / 2); s.quadraticCurveTo(-w / 2, h / 2, -w / 2, h / 2 - r);
-  s.lineTo(-w / 2, -h / 2 + r); s.quadraticCurveTo(-w / 2, -h / 2, -w / 2 + r, -h / 2);
-  return s;
-}
-function docShape(w, h, cut) {
-  const s = new THREE.Shape();
-  s.moveTo(-w / 2, -h / 2);
-  s.lineTo(w / 2, -h / 2);
-  s.lineTo(w / 2, h / 2 - cut);
-  s.lineTo(w / 2 - cut, h / 2);
-  s.lineTo(-w / 2, h / 2);
-  return s;
-}
-function triShape(sz) {
-  const s = new THREE.Shape();
-  s.moveTo(0, sz * .62);
-  s.lineTo(sz * .58, -sz * .38);
-  s.lineTo(-sz * .58, -sz * .38);
-  return s;
-}
-
 function extrude(shape, depth) {
   return new THREE.ExtrudeGeometry(shape, {
-    depth, bevelEnabled: true, bevelThickness: .015, bevelSize: .015, bevelSegments: 1,
+    depth, bevelEnabled: true, bevelThickness: .014, bevelSize: .014, bevelSegments: 1,
   });
-}
-
-function mat(color, rough = .55) {
-  return new THREE.MeshStandardMaterial({ color, roughness: rough, metalness: .05, transparent: true, opacity: 0 });
 }
 
 /* isotipo: los dos polígonos exactos del logo, extruidos */
@@ -72,80 +44,6 @@ function markShape(poly) {
   return shape;
 }
 
-/* --------- herramientas: color y silueta, sin logos --------- */
-function buildTools(mobile) {
-  const defs = [
-    {
-      id: 'wa', label: 'Respondido al instante',
-      pos: mobile ? [-1.15, 5.0, -1.1] : [-5.2, 2.7, -1.4],
-      build() {
-        const g = new THREE.Group();
-        const body = new THREE.Mesh(extrude(roundedRectShape(.92, .78, .22), .14), mat(0x2F9C60, .5));
-        const tail = new THREE.Mesh(extrude(triShape(.2), .1), mat(0x2F9C60, .5));
-        tail.position.set(-.42, -.5, 0); tail.rotation.z = .6;
-        g.add(body, tail);
-        return g;
-      },
-    },
-    {
-      id: 'sh', label: 'Fila agregada a tu planilla',
-      pos: mobile ? [1.2, 5.4, -1.5] : [-1.6, 3.1, -2.2],
-      build() {
-        const g = new THREE.Group();
-        const doc = new THREE.Mesh(extrude(docShape(.78, 1.02, .24), .1), mat(0x2E7D53, .5));
-        for (let i = 0; i < 3; i++) {
-          const bar = new THREE.Mesh(new THREE.BoxGeometry(.44, .06, .03), mat(0xCFE3D6, .6));
-          bar.position.set(-.06, .26 - i * .24, .09);
-          g.add(bar);
-        }
-        g.add(doc);
-        return g;
-      },
-    },
-    {
-      id: 'gm', label: 'Confirmación enviada',
-      pos: mobile ? [-1.2, 3.3, -.9] : [2.3, -2.8, -1],
-      build() {
-        const g = new THREE.Group();
-        const body = new THREE.Mesh(new THREE.BoxGeometry(1.06, .72, .1), mat(0xD8D1C4, .45));
-        const f1 = new THREE.Mesh(new THREE.BoxGeometry(.6, .05, .02), mat(0xA79F90, .5));
-        const f2 = new THREE.Mesh(new THREE.BoxGeometry(.6, .05, .02), mat(0xA79F90, .5));
-        f1.position.set(-.26, .12, .06); f1.rotation.z = -.5;
-        f2.position.set(.26, .12, .06); f2.rotation.z = .5;
-        g.add(body, f1, f2);
-        return g;
-      },
-    },
-    {
-      id: 'fo', label: 'Respuesta registrada',
-      pos: [6.3, 2.2, -1.7],
-      build() {
-        const g = new THREE.Group();
-        const doc = new THREE.Mesh(extrude(docShape(.78, 1.02, .24), .1), mat(0x6E5F9E, .5));
-        for (let i = 0; i < 3; i++) {
-          const dot = new THREE.Mesh(new THREE.BoxGeometry(.08, .08, .03), mat(0xD9D4E6, .6));
-          dot.position.set(-.26, .28 - i * .25, .09);
-          const bar = new THREE.Mesh(new THREE.BoxGeometry(.34, .055, .03), mat(0xD9D4E6, .6));
-          bar.position.set(.02, .28 - i * .25, .09);
-          g.add(dot, bar);
-        }
-        g.add(doc);
-        return g;
-      },
-    },
-    {
-      id: 'dr', label: 'Archivo ordenado',
-      pos: [6.1, -2, -1.2],
-      build() {
-        const g = new THREE.Group();
-        g.add(new THREE.Mesh(extrude(triShape(.85), .12), mat(0xC2A344, .5)));
-        return g;
-      },
-    },
-  ];
-  return mobile ? defs.slice(0, 3) : defs;
-}
-
 export function initHero(container) {
   const mobile = matchMedia('(max-width: 720px)').matches;
   const hero = container.closest('.hero');
@@ -157,88 +55,102 @@ export function initHero(container) {
   container.appendChild(renderer.domElement);
 
   const scene = new THREE.Scene();
-  scene.fog = new THREE.Fog(INK, 13.5, 24);
-  const t0 = performance.now();
+  scene.fog = new THREE.Fog(INK, 12, 26);
 
-  const camera = new THREE.PerspectiveCamera(35, container.clientWidth / container.clientHeight, .1, 40);
+  const camera = new THREE.PerspectiveCamera(35, container.clientWidth / container.clientHeight, .1, 44);
   camera.position.set(0, 0, 13);
 
-  scene.add(new THREE.AmbientLight(0xFFF6EE, .5));
-  const key = new THREE.DirectionalLight(0xFFFFFF, 1.7);
+  scene.add(new THREE.AmbientLight(0xFFF6EE, .55));
+  const key = new THREE.DirectionalLight(0xFFFFFF, 1.55);
   key.position.set(4, 6, 8);
   scene.add(key);
-  const warm = new THREE.PointLight(RED, 2.2, 9, 1.6);
+  const fill = new THREE.DirectionalLight(0xBFCAFF, .35);
+  fill.position.set(-6, -2, 4);
+  scene.add(fill);
+  const warm = new THREE.PointLight(RED, 2.4, 11, 1.7);
   scene.add(warm);
 
   /* ---- isotipo: dos piezas que se ensamblan al cargar ---- */
   const markMat = new THREE.MeshStandardMaterial({
-    color: RED, roughness: .38, metalness: .08,
-    emissive: RED, emissiveIntensity: .12, transparent: true, opacity: 0,
+    color: RED, roughness: .34, metalness: .12,
+    emissive: RED, emissiveIntensity: .1, transparent: true, opacity: 0,
   });
-  const pieceR = new THREE.Mesh(extrude(markShape(R_POLY), .34), markMat);
-  const pieceC = new THREE.Mesh(extrude(markShape(C_POLY), .34), markMat.clone());
+  const pieceR = new THREE.Mesh(extrude(markShape(R_POLY), .32), markMat);
+  const pieceC = new THREE.Mesh(extrude(markShape(C_POLY), .32), markMat.clone());
   const markGroup = new THREE.Group();
   markGroup.add(pieceR, pieceC);
-  const markBase = mobile ? { x: .2, y: 3.6, s: .62 } : { x: 2.7, y: .15, s: 1 };
+  const markBase = mobile ? { x: .1, y: 3.5, s: .66 } : { x: 2.9, y: .1, s: 1.05 };
   markGroup.position.set(markBase.x, markBase.y, 0);
   markGroup.scale.setScalar(markBase.s);
   scene.add(markGroup);
   warm.position.set(markBase.x, markBase.y, 2);
 
-  // estado de ensamblado (resortes)
-  const asm = { rx: -2.2, cx: 2.2, started: false };
-  setTimeout(() => { asm.started = true; }, 350);
+  // estado de ensamblado (resortes): las piezas entran desde los lados
+  const asm = { rx: -2.4, cx: 2.4, started: false };
+  setTimeout(() => { asm.started = true; }, 320);
 
-  /* ---- herramientas ---- */
-  const toolDefs = buildTools(mobile);
-  const tools = toolDefs.map((def, i) => {
-    const group = def.build();
-    group.position.fromArray(def.pos);
-    scene.add(group);
-    return {
-      def, group,
-      base: new THREE.Vector3().fromArray(def.pos),
-      cur: new THREE.Vector3().fromArray(def.pos),
-      vel: new THREE.Vector3(),
-      phase: Math.random() * Math.PI * 2,
-      rotAmp: .12 + Math.random() * .1,
-      fadeAt: 900 + i * 160,
-      opacity: 0,
-    };
+  /* ---- campo de puntos finos (profundidad, no relleno) ---- */
+  const COUNT = mobile ? 70 : 150;
+  const pPos = new Float32Array(COUNT * 3);
+  const pBase = new Float32Array(COUNT * 3);
+  const pPhase = new Float32Array(COUNT);
+  const spreadX = mobile ? 7 : 13, spreadY = 9, spreadZ = 7;
+  for (let i = 0; i < COUNT; i++) {
+    const x = (Math.random() - 0.5) * spreadX;
+    const y = (Math.random() - 0.5) * spreadY;
+    const z = (Math.random() - 0.5) * spreadZ - 1.5;
+    pBase[i * 3] = x; pBase[i * 3 + 1] = y; pBase[i * 3 + 2] = z;
+    pPos[i * 3] = x; pPos[i * 3 + 1] = y; pPos[i * 3 + 2] = z;
+    pPhase[i] = Math.random() * Math.PI * 2;
+  }
+  const pGeo = new THREE.BufferGeometry();
+  pGeo.setAttribute('position', new THREE.BufferAttribute(pPos, 3));
+  const pMat = new THREE.PointsMaterial({
+    color: PAPER, size: mobile ? .028 : .034, sizeAttenuation: true,
+    transparent: true, opacity: 0, depthWrite: false,
   });
+  const points = new THREE.Points(pGeo, pMat);
+  points.frustumCulled = false;
+  scene.add(points);
 
-  /* ---- líneas: curvas suaves que convergen en el isotipo ---- */
-  const LINE_PTS = 36;
-  const lines = tools.map(t => {
+  /* ---- anclas + líneas que convergen en el isotipo ---- */
+  const ANCHORS = mobile ? 4 : 7;
+  const LINE_PTS = 34;
+  const lines = [];
+  for (let i = 0; i < ANCHORS; i++) {
+    const ang = (i / ANCHORS) * Math.PI * 2 + Math.random() * .5;
+    const rad = (mobile ? 3.2 : 5.2) + Math.random() * 1.6;
+    const anchor = new THREE.Vector3(
+      markBase.x + Math.cos(ang) * rad,
+      markBase.y + Math.sin(ang) * rad * .72,
+      -1 - Math.random() * 2.4
+    );
     const geo = new THREE.BufferGeometry();
     geo.setAttribute('position', new THREE.BufferAttribute(new Float32Array(LINE_PTS * 3), 3));
-    const m = new THREE.LineBasicMaterial({ color: 0xFBFAF9, transparent: true, opacity: 0 });
+    const m = new THREE.LineBasicMaterial({ color: PAPER, transparent: true, opacity: 0 });
     const line = new THREE.Line(geo, m);
     line.frustumCulled = false;
     scene.add(line);
-    return { line, geo, m, tool: t, baseOpacity: .11, glow: 0 };
-  });
+    lines.push({ line, geo, m, anchor, cur: anchor.clone(), phase: Math.random() * Math.PI * 2, baseOpacity: .1, glow: 0 });
+  }
 
-  /* pulso de automatización */
+  /* pulso de automatización (una señal que viaja por una línea) */
   const pulseMesh = new THREE.Mesh(
-    new THREE.SphereGeometry(.055, 10, 10),
+    new THREE.SphereGeometry(.05, 12, 12),
     new THREE.MeshBasicMaterial({ color: RED, transparent: true, opacity: 0 })
   );
   scene.add(pulseMesh);
-  const pulse = { active: false, t: 0, idx: 0, fired: false };
+  const pulse = { active: false, t: 0, idx: 0 };
   let emissiveBlip = 0;
 
   function startPulse() {
     if (pulse.active || document.hidden || !running) return;
     pulse.active = true;
     pulse.t = 0;
-    pulse.fired = false;
-    pulse.idx = Math.floor(Math.random() * tools.length);
+    pulse.idx = Math.floor(Math.random() * lines.length);
   }
-  setTimeout(startPulse, 2600);
-  const pulseTimer = setInterval(() => {
-    if (!pulse.active) startPulse();
-  }, 5200);
+  setTimeout(startPulse, 2400);
+  const pulseTimer = setInterval(() => { if (!pulse.active) startPulse(); }, 4200);
 
   /* ---- interacción ---- */
   const mouse = { x: 0, y: 0 };
@@ -276,10 +188,19 @@ export function initHero(container) {
 
   /* ---- cámara con resorte ---- */
   const cam = { x: 0, y: 0, z: 13 };
-
   const tmpV = new THREE.Vector3();
-  const tmpDrift = new THREE.Vector3();
-  const convergeTarget = new THREE.Vector3();
+  const midV = new THREE.Vector3();
+  const pV = new THREE.Vector3();
+
+  function bezierAt(a, mid, b, u, out) {
+    const iu = 1 - u;
+    out.set(
+      iu * iu * a.x + 2 * iu * u * mid.x + u * u * b.x,
+      iu * iu * a.y + 2 * iu * u * mid.y + u * u * b.y,
+      iu * iu * a.z + 2 * iu * u * mid.z + u * u * b.z
+    );
+    return out;
+  }
 
   let last = performance.now();
   function tick(now) {
@@ -291,115 +212,92 @@ export function initHero(container) {
 
     /* ensamblado inicial del isotipo */
     if (asm.started) {
-      spring(asm, 'rx', 0, 46, 7, dt);
-      spring(asm, 'cx', 0, 46, 6.5, dt);
+      spring(asm, 'rx', 0, 44, 7, dt);
+      spring(asm, 'cx', 0, 44, 6.5, dt);
     }
     pieceR.position.x = asm.rx;
     pieceC.position.x = asm.cx;
-    const asmProg = 1 - Math.min(1, (Math.abs(asm.rx) + Math.abs(asm.cx)) / 4.4);
+    const asmProg = 1 - Math.min(1, (Math.abs(asm.rx) + Math.abs(asm.cx)) / 4.8);
     pieceR.material.opacity = Math.min(1, asmProg * 1.6 + (asm.started ? .12 : 0));
     pieceC.material.opacity = pieceR.material.opacity;
 
     /* isotipo: flota y mira suavemente al cursor */
-    markGroup.position.y = markBase.y + Math.sin(t * .55) * .07;
-    spring(markGroup.rotation, 'y', mouse.x * .24, 30, 8, dt);
-    spring(markGroup.rotation, 'x', mouse.y * .12, 30, 8, dt);
+    markGroup.position.y = markBase.y + Math.sin(t * .5) * .08;
+    spring(markGroup.rotation, 'y', mouse.x * .26, 28, 8, dt);
+    spring(markGroup.rotation, 'x', mouse.y * .13, 28, 8, dt);
 
-    emissiveBlip *= Math.pow(.028, dt); // decae rápido
-    pieceR.material.emissiveIntensity = .12 + emissiveBlip * .55;
+    emissiveBlip *= Math.pow(.03, dt); // decae rápido
+    pieceR.material.emissiveIntensity = .1 + emissiveBlip * .6;
     pieceC.material.emissiveIntensity = pieceR.material.emissiveIntensity;
 
-    /* convergencia por scroll */
-    const conv = easeInOut(scrollP) * .6;
+    /* fade-in global de puntos y líneas */
+    const revealed = asm.started ? Math.min(1, pMat.opacity / .55 + dt * .5) : 0;
 
-    tools.forEach((tool, i) => {
-      if (tool.opacity < 1 && now - t0 > tool.fadeAt) {
-        tool.opacity = Math.min(1, tool.opacity + dt * 1.4);
-        tool.group.traverse(o => { if (o.material) o.material.opacity = tool.opacity; });
-      }
-      // objetivo: posición base + deriva + atracción hacia el isotipo + parallax
-      convergeTarget.copy(markGroup.position);
-      tmpDrift.set(
-        Math.sin(t * .5 + tool.phase) * .16 + mouse.x * (.3 + tool.base.z * -.15),
-        Math.cos(t * .42 + tool.phase * 1.3) * .14 - mouse.y * (.22 + tool.base.z * -.1),
-        0
-      );
-      tmpV.copy(tool.base).lerp(convergeTarget, conv).add(tmpDrift);
-      // resorte 3D hacia el objetivo
-      const k = 26, d = 7;
-      tool.vel.addScaledVector(tmpV.sub(tool.cur).multiplyScalar(k).addScaledVector(tool.vel, -d), dt);
-      tool.cur.addScaledVector(tool.vel, dt);
-      tool.group.position.copy(tool.cur);
-      tool.group.rotation.y = Math.sin(t * .4 + tool.phase) * tool.rotAmp + mouse.x * .18;
-      tool.group.rotation.x = Math.cos(t * .35 + tool.phase) * tool.rotAmp * .6;
-    });
+    /* campo de puntos: deriva lenta + parallax al cursor */
+    pMat.opacity = revealed * .55;
+    const drift = mobile ? 0 : .35;
+    for (let i = 0; i < COUNT; i++) {
+      const bx = pBase[i * 3], by = pBase[i * 3 + 1], bz = pBase[i * 3 + 2];
+      const ph = pPhase[i];
+      const depth = (bz + spreadZ / 2) / spreadZ; // 0 lejos → 1 cerca
+      pPos[i * 3]     = bx + Math.sin(t * .18 + ph) * .12 + mouse.x * drift * (.3 + depth);
+      pPos[i * 3 + 1] = by + Math.cos(t * .15 + ph) * .12 - mouse.y * drift * (.25 + depth);
+      pPos[i * 3 + 2] = bz;
+    }
+    pGeo.attributes.position.needsUpdate = true;
 
-    /* líneas que convergen (curvas, nunca ángulos de 90°) */
+    /* convergencia por scroll: la marca "traga" las líneas */
+    const conv = easeInOut(scrollP) * .55;
+
     lines.forEach((L, i) => {
-      const a = L.tool.cur;
-      const b = markGroup.position;
-      const mid = tmpV.copy(a).add(b).multiplyScalar(.5);
-      mid.y += (i % 2 ? -.55 : .5);
-      mid.z += -.6;
+      // el ancla respira un poco y se atrae hacia la marca con el scroll
+      tmpV.copy(L.anchor);
+      tmpV.x += Math.sin(t * .3 + L.phase) * .18 + mouse.x * .3;
+      tmpV.y += Math.cos(t * .26 + L.phase) * .16 - mouse.y * .24;
+      tmpV.lerp(markGroup.position, conv);
+      L.cur.lerp(tmpV, Math.min(1, dt * 3));
+
+      const a = L.cur, b = markGroup.position;
+      midV.copy(a).add(b).multiplyScalar(.5);
+      midV.y += (i % 2 ? -.5 : .5);
+      midV.z += -.5;
       const pos = L.geo.attributes.position.array;
       for (let j = 0; j < LINE_PTS; j++) {
-        const u = j / (LINE_PTS - 1);
-        const iu = 1 - u;
-        // bezier cuadrática
-        const x = iu * iu * a.x + 2 * iu * u * mid.x + u * u * b.x;
-        const y = iu * iu * a.y + 2 * iu * u * mid.y + u * u * b.y;
-        const z = iu * iu * a.z + 2 * iu * u * mid.z + u * u * b.z;
-        pos[j * 3] = x; pos[j * 3 + 1] = y; pos[j * 3 + 2] = z;
+        bezierAt(a, midV, b, j / (LINE_PTS - 1), pV);
+        pos[j * 3] = pV.x; pos[j * 3 + 1] = pV.y; pos[j * 3 + 2] = pV.z;
       }
       L.geo.attributes.position.needsUpdate = true;
       L.glow *= Math.pow(.05, dt);
-      const target = (L.baseOpacity + conv * .25) * L.tool.opacity + L.glow;
+      const target = (L.baseOpacity + conv * .22) * revealed + L.glow;
       L.m.opacity += (target - L.m.opacity) * Math.min(1, dt * 8);
     });
 
-    /* pulso: una línea se activa sola */
+    /* pulso: una señal viaja por una línea hasta la marca */
     if (pulse.active) {
-      pulse.t += dt / 1.25;
+      pulse.t += dt / 1.15;
       const L = lines[pulse.idx];
-      L.glow = .4;
+      L.glow = .38;
       if (pulse.t >= 1) {
         pulse.active = false;
         pulseMesh.material.opacity = 0;
-        emissiveBlip = 1;
+        emissiveBlip = 1; // la marca "recibe" la señal
       } else {
         const u = easeInOut(pulse.t);
-        const a = L.tool.cur, b = markGroup.position;
-        const mid = tmpV.copy(a).add(b).multiplyScalar(.5);
-        mid.y += (pulse.idx % 2 ? -.55 : .5);
-        mid.z += -.6;
-        const iu = 1 - u;
-        pulseMesh.position.set(
-          iu * iu * a.x + 2 * iu * u * mid.x + u * u * b.x,
-          iu * iu * a.y + 2 * iu * u * mid.y + u * u * b.y,
-          iu * iu * a.z + 2 * iu * u * mid.z + u * u * b.z
-        );
-        pulseMesh.material.opacity = Math.min(1, pulse.t * 6) * (1 - Math.max(0, pulse.t - .85) / .15);
-        // aviso al DOM cuando el pulso está llegando
-        if (!pulse.fired && pulse.t > .12) {
-          pulse.fired = true;
-          const sp = L.tool.cur.clone().project(camera);
-          dispatchEvent(new CustomEvent('rl:pulse', {
-            detail: {
-              label: L.tool.def.label,
-              x: (sp.x * .5 + .5) * container.clientWidth,
-              y: (-sp.y * .5 + .5) * container.clientHeight,
-            },
-          }));
-        }
+        const a = L.cur, b = markGroup.position;
+        midV.copy(a).add(b).multiplyScalar(.5);
+        midV.y += (pulse.idx % 2 ? -.5 : .5);
+        midV.z += -.5;
+        bezierAt(a, midV, b, u, pulseMesh.position);
+        pulseMesh.material.opacity = Math.min(1, pulse.t * 6) * (1 - Math.max(0, pulse.t - .82) / .18);
       }
     }
 
     /* cámara */
     spring(cam, 'x', mouse.x * .5, 20, 7, dt);
     spring(cam, 'y', -mouse.y * .32, 20, 7, dt);
-    spring(cam, 'z', 13 - easeInOut(scrollP) * 1.4, 20, 7, dt);
+    spring(cam, 'z', 13 - easeInOut(scrollP) * 1.5, 20, 7, dt);
     camera.position.set(cam.x, cam.y, cam.z);
-    camera.lookAt(mobile ? 0 : 1.1, mobile ? 1.6 : 0, 0);
+    camera.lookAt(mobile ? 0 : 1.2, mobile ? 1.5 : 0, 0);
 
     renderer.render(scene, camera);
   }
