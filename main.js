@@ -7,20 +7,42 @@
 const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
 
-/* ---------- NAV + barra de progreso de scroll ---------- */
+/* ---------- NAV + progreso de scroll + riel de flujo ---------- */
 const nav = document.getElementById('nav');
 const progress = document.getElementById('scroll-progress');
+const rail = document.getElementById('flow-rail');
+const railFill = document.getElementById('flow-rail-fill');
+const railNodes = rail ? [...rail.querySelectorAll('.flow-node')] : [];
+// secciones que marca el riel, en orden
+const railSections = railNodes.map(n => document.getElementById(n.dataset.target));
+// la sección demo es de fondo claro: el riel debe invertirse ahí
+const paperSection = document.getElementById('demo');
+
 let progTick = false;
 function onPageScroll() {
   nav.classList.toggle('scrolled', scrollY > 30);
-  if (progress && !progTick) {
-    progTick = true;
-    requestAnimationFrame(() => {
-      const max = document.documentElement.scrollHeight - innerHeight;
-      progress.style.transform = `scaleX(${max > 0 ? clamp(scrollY / max, 0, 1) : 0})`;
-      progTick = false;
-    });
-  }
+  if (progTick) return;
+  progTick = true;
+  requestAnimationFrame(() => {
+    const max = document.documentElement.scrollHeight - innerHeight;
+    const p = max > 0 ? clamp(scrollY / max, 0, 1) : 0;
+
+    if (progress) progress.style.transform = `scaleX(${p})`;
+    if (railFill) railFill.style.transform = `scaleY(${p})`;
+
+    // nodo activo: la última sección cuyo tope ya pasamos
+    const mid = scrollY + innerHeight * 0.42;
+    let active = 0;
+    railSections.forEach((sec, i) => { if (sec && sec.offsetTop <= mid) active = i; });
+    railNodes.forEach((n, i) => n.classList.toggle('on', i <= active));
+
+    // invertir el riel sobre la sección de fondo claro (demo)
+    if (rail && paperSection) {
+      const top = paperSection.offsetTop, bot = top + paperSection.offsetHeight;
+      rail.classList.toggle('on-light', mid >= top && mid < bot);
+    }
+    progTick = false;
+  });
 }
 addEventListener('scroll', onPageScroll, { passive: true });
 addEventListener('resize', onPageScroll, { passive: true });

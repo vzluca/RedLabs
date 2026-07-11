@@ -18,6 +18,29 @@
   <a class="skip-link" href="#que-hacemos">Saltar al contenido</a>
   <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
 
+  <!-- Riel de flujo: cable vertical con nodos por sección -->
+  <nav class="flow-rail" id="flow-rail" aria-label="Progreso del flujo">
+    <div class="flow-rail-track"></div>
+    <div class="flow-rail-fill" id="flow-rail-fill"></div>
+    <div class="flow-nodes">
+      <a class="flow-node" href="#inicio" data-target="inicio" style="top:0%">
+        <span class="flow-node-dot"></span><span class="flow-node-label">Inicio</span>
+      </a>
+      <a class="flow-node" href="#que-hacemos" data-target="que-hacemos" style="top:33%">
+        <span class="flow-node-dot"></span><span class="flow-node-label">Qué hacemos</span>
+      </a>
+      <a class="flow-node" href="#como-trabajamos" data-target="como-trabajamos" style="top:58%">
+        <span class="flow-node-dot"></span><span class="flow-node-label">Cómo trabajamos</span>
+      </a>
+      <a class="flow-node" href="#demo" data-target="demo" style="top:80%">
+        <span class="flow-node-dot"></span><span class="flow-node-label">Probalo</span>
+      </a>
+      <a class="flow-node" href="#contacto" data-target="contacto" style="top:100%">
+        <span class="flow-node-dot"></span><span class="flow-node-label">Hablemos</span>
+      </a>
+    </div>
+  </nav>
+
   <!-- ===================== NAV ===================== -->
   <header class="nav" id="nav">
     <a href="#inicio" class="nav-logo" aria-label="REDLABS — inicio">
@@ -70,9 +93,9 @@
       <div class="hero-veil" aria-hidden="true"></div>
 
       <div class="hero-content">
-        <p class="hero-eyebrow"><span class="chev" aria-hidden="true">&lt;</span> Automatización con IA · n8n · Sitios web</p>
-        <h1 class="hero-title">Menos tareas repetitivas.<br><em>Más negocio funcionando solo.</em></h1>
-        <p class="hero-sub">Conectamos las apps que ya usás y dejamos que trabajen entre ellas. Automatizaciones con IA sobre n8n, y sitios web a medida — como este.</p>
+        <p class="hero-eyebrow tech">Automatización con IA · n8n · Sitios web</p>
+        <h1 class="hero-title">Tu negocio, conectado.<br><em>Trabajando solo.</em></h1>
+        <p class="hero-sub">Diseñamos flujos de automatización con IA sobre n8n que conectan las apps que ya usás — y sitios web a medida que se enchufan a ellos. Como este.</p>
         <div class="hero-actions">
           <a href="#contacto" class="btn btn-primary">Quiero automatizar</a>
           <a href="#demo" class="btn btn-ghost">Ver cómo funciona</a>
@@ -81,18 +104,19 @@
 
       <a class="hero-scroll" href="#que-hacemos">
         <span class="hero-scroll-chev" aria-hidden="true">&lt;</span>
-        <span>Descubrir</span>
+        <span class="tech">Recorrer el flujo</span>
       </a>
     </section>
 
     <!-- ===================== QUÉ HACEMOS ===================== -->
     <section class="qh section-dark" id="que-hacemos">
       <div class="container">
-        <p class="sec-label"><span class="chev" aria-hidden="true">&lt;</span> Qué hacemos</p>
-        <h2 class="qh-title">Las tareas que te comen el día,<br><em>hechas solas.</em></h2>
+        <p class="sec-label">Qué hacemos</p>
+        <h2 class="qh-title">Dos motores para el mismo objetivo:<br><em>que tu negocio corra solo.</em></h2>
 
         <div class="qh-grid">
           <article class="qh-card">
+            <span class="qh-card-tag tech">01 — Automatización</span>
             <h3 class="qh-card-title">Tus apps, conectadas</h3>
             <p>Un cliente escribe, y el pedido ya está en tu planilla. Llega un formulario, y la respuesta sale sola. Entra un archivo, y se guarda donde va. Todo pasa en segundos, sin que nadie lo toque.</p>
             <ul class="qh-tools" aria-label="Herramientas que conectamos">
@@ -113,6 +137,7 @@
           </article>
 
           <article class="qh-card">
+            <span class="qh-card-tag tech">02 — Sitios web</span>
             <h3 class="qh-card-title">Sitios que trabajan por vos</h3>
             <p>Landing pages y sitios a medida: rápidos, claros y pensados para convertir visitas en clientes. Diseñados y construidos por nosotros de punta a punta. Como este que estás viendo.</p>
             <ul class="qh-list">
@@ -124,7 +149,7 @@
         </div>
 
         <div class="qh-ej">
-          <p class="qh-ej-title">Por ejemplo, cosas que dejamos funcionando solas:</p>
+          <p class="qh-ej-title tech">Flujos que dejamos corriendo solos</p>
           <ul class="qh-ej-grid">
             <li><span class="chev" aria-hidden="true">&lt;</span> Tu WhatsApp responde consultas las 24 hs</li>
             <li><span class="chev" aria-hidden="true">&lt;</span> Los turnos se agendan sin ida y vuelta de mensajes</li>
@@ -143,7 +168,7 @@
     <section class="ct" id="como-trabajamos">
       <div class="ct-sticky" id="ct-sticky">
         <div class="container ct-inner">
-          <p class="sec-label ct-label"><span class="chev" aria-hidden="true">&lt;</span> Cómo trabajamos</p>
+          <p class="sec-label ct-label">Cómo trabajamos</p>
 
           <div class="ct-layout">
             <div class="ct-left" aria-hidden="true">
@@ -159,14 +184,17 @@
 
             <div class="ct-steps">
               <article class="ct-step" data-step="0">
+                <span class="tech">Paso 01 — Disparador</span>
                 <h3>Contanos qué te quita tiempo</h3>
                 <p>Una charla corta, sin tecnicismos. Nos contás qué hacés todos los días a mano — responder mensajes, pasar datos, mandar recordatorios — y detectamos qué se puede hacer solo.</p>
               </article>
               <article class="ct-step" data-step="1">
+                <span class="tech">Paso 02 — Conexión</span>
                 <h3>Conectamos tus herramientas</h3>
-                <p>Armamos el sistema con las apps que ya usás. No cambiás de programa ni aprendés nada nuevo: tu WhatsApp sigue siendo tu WhatsApp, tu planilla sigue siendo tu planilla.</p>
+                <p>Armamos el flujo con las apps que ya usás. No cambiás de programa ni aprendés nada nuevo: tu WhatsApp sigue siendo tu WhatsApp, tu planilla sigue siendo tu planilla.</p>
               </article>
               <article class="ct-step" data-step="2">
+                <span class="tech">Paso 03 — En marcha</span>
                 <h3>Todo empieza a andar solo</h3>
                 <p>Lo probamos con casos reales, lo dejamos funcionando y nos quedamos cerca. Vos ves los resultados; nosotros nos ocupamos de que nunca se detenga.</p>
               </article>
@@ -179,7 +207,7 @@
     <!-- ===================== DEMO ===================== -->
     <section class="demo section-paper" id="demo">
       <div class="container">
-        <p class="sec-label"><span class="chev" aria-hidden="true">&lt;</span> Probalo vos</p>
+        <p class="sec-label">Probalo vos</p>
         <h2 class="demo-title">Este es Redi.<br>Atiende un negocio que funciona solo.</h2>
         <p class="demo-lead">Redi es nuestro asistente. Elegí una consulta — como si fueras un cliente — y mirá lo que pasa del otro lado en el mismo segundo.</p>
 
