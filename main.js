@@ -66,8 +66,8 @@ if (!reduced && ctPath) {
   ctPath.style.strokeDashoffset = pathLen;
   const nodeAt = [.09, .42, .82];
 
-  // tinta #151110 → papel #FBFAF9
-  const c0 = [21, 17, 15], c1 = [251, 250, 249];
+  // tinta #0B0908 → papel #FBFAF9
+  const c0 = [11, 9, 8], c1 = [251, 250, 249];
   let lastStep = -1;
 
   const update = () => {
@@ -230,7 +230,7 @@ new IntersectionObserver((entries, obs) => {
   if (!entries[0].isIntersecting || greeted) return;
   greeted = true;
   obs.disconnect();
-  setTimeout(() => addMsg('¡Hola! Soy el asistente de REDLABS. Estoy acá para automatizar las tareas repetitivas de tu negocio.', 'bot'), reduced ? 0 : 500);
+  setTimeout(() => addMsg('¡Hola! Soy Redi, el asistente de REDLABS. Estoy acá para automatizar las tareas repetitivas de tu negocio.', 'bot'), reduced ? 0 : 500);
   greetTimers.push(setTimeout(() => addMsg('Escribime como si fueras un cliente: pedí un turno, preguntá un precio, hacé un pedido.', 'bot'), reduced ? 0 : 1600));
 }, { threshold: .35 }).observe(chatLog);
 

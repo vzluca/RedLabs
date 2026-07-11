@@ -26,10 +26,14 @@ python3 -m http.server 8000
 (Hace falta un servidor porque `main.js` usa módulos ES; abrir el archivo
 directo con `file://` no funciona.)
 
-## Pendientes antes de publicar
+## Contacto configurado
 
-- [ ] Reemplazar el número de WhatsApp placeholder en `index.html`
-      (buscar `wa.me/5491100000000`).
+- WhatsApp: `wa.me/5492216234812`
+- Mail: `somosredlabs@gmail.com`
+- Instagram: `@somosredlabs`
+
+## Pendientes
+
 - [ ] Cargar los casos reales en la sección **Resultados** cuando haya
       métricas (están marcados como `[CASO 1]`, `[CASO 2]`, `[CASO 3]`).
 - [ ] Opcional: agregar una imagen `og:image` para compartir en redes.
