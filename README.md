@@ -32,8 +32,16 @@ directo con `file://` no funciona.)
 - Mail: `somosredlabs@gmail.com`
 - Instagram: `@somosredlabs`
 
+## Formulario de contacto
+
+El formulario del CTA envía a `somosredlabs@gmail.com` vía
+[FormSubmit](https://formsubmit.co) (gratuito, sin backend propio).
+**Importante**: la primera vez que alguien envíe el formulario, FormSubmit
+manda un mail de activación a esa casilla — hay que hacer clic en el link
+una única vez para que empiecen a llegar las consultas.
+
 ## Pendientes
 
-- [ ] Cargar los casos reales en la sección **Resultados** cuando haya
-      métricas (están marcados como `[CASO 1]`, `[CASO 2]`, `[CASO 3]`).
+- [ ] Sección **Resultados** removida por ahora; volver a agregarla cuando
+      haya métricas reales de clientes.
 - [ ] Opcional: agregar una imagen `og:image` para compartir en redes.
