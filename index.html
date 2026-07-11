@@ -41,7 +41,6 @@
     <a href="#que-hacemos" class="mobile-link">Qué hacemos</a>
     <a href="#como-trabajamos" class="mobile-link">Cómo trabajamos</a>
     <a href="#demo" class="mobile-link">Probalo</a>
-    <a href="#casos" class="mobile-link">Resultados</a>
     <a href="#contacto" class="mobile-link mobile-link-cta">Hablemos</a>
   </div>
 
@@ -96,10 +95,17 @@
             <p>Un cliente escribe, y el pedido ya está en tu planilla. Llega un formulario, y la respuesta sale sola. Entra un archivo, y se guarda donde va. Todo pasa en segundos, sin que nadie lo toque.</p>
             <ul class="qh-tools" aria-label="Herramientas que conectamos">
               <li class="tool-chip" data-tool="wa"><span class="tool-dot"></span>WhatsApp</li>
+              <li class="tool-chip" data-tool="ig"><span class="tool-dot"></span>Instagram</li>
               <li class="tool-chip" data-tool="gm"><span class="tool-dot"></span>Gmail</li>
               <li class="tool-chip" data-tool="sh"><span class="tool-dot"></span>Google Sheets</li>
               <li class="tool-chip" data-tool="fo"><span class="tool-dot"></span>Google Forms</li>
               <li class="tool-chip" data-tool="dr"><span class="tool-dot"></span>Google Drive</li>
+              <li class="tool-chip" data-tool="ca"><span class="tool-dot"></span>Google Calendar</li>
+              <li class="tool-chip" data-tool="no"><span class="tool-dot"></span>Notion</li>
+              <li class="tool-chip" data-tool="mt"><span class="tool-dot"></span>Meta Business</li>
+              <li class="tool-chip" data-tool="dl"><span class="tool-dot"></span>360dialog</li>
+              <li class="tool-chip" data-tool="ai"><span class="tool-dot"></span>GPT-4o</li>
+              <li class="tool-chip" data-tool="wh"><span class="tool-dot"></span>Whisper</li>
             </ul>
           </article>
 
@@ -168,11 +174,11 @@
     </section>
 
     <!-- ===================== DEMO ===================== -->
-    <section class="demo section-red" id="demo">
+    <section class="demo section-paper" id="demo">
       <div class="container">
         <p class="sec-label"><span class="chev" aria-hidden="true">&lt;</span> Probalo vos</p>
         <h2 class="demo-title">Este es Redi.<br>Atiende un negocio que funciona solo.</h2>
-        <p class="demo-lead">Redi es nuestro asistente. Escribile como si fueras un cliente — pedí un turno, preguntá un precio — y mirá lo que pasa del otro lado en el mismo segundo.</p>
+        <p class="demo-lead">Redi es nuestro asistente. Elegí una consulta — como si fueras un cliente — y mirá lo que pasa del otro lado en el mismo segundo.</p>
 
         <div class="demo-grid">
           <!-- Chat -->
@@ -188,18 +194,18 @@
               </div>
             </div>
             <div class="chat" id="chat-log" aria-live="polite" aria-label="Conversación"></div>
-            <div class="chat-suggestions" id="chat-suggestions">
+            <div class="chat-suggestions" id="chat-suggestions" aria-label="Opciones para probar a Redi">
               <button class="sug" type="button" data-msg="Quiero pedir un turno para el jueves">Pedir un turno</button>
               <button class="sug" type="button" data-msg="¿Cuánto sale el servicio?">Preguntar precio</button>
               <button class="sug" type="button" data-msg="Quiero hacer un pedido">Hacer un pedido</button>
+              <button class="sug" type="button" data-msg="¿Qué horarios tienen?">Ver horarios</button>
             </div>
-            <form class="chat-input" id="chat-form">
-              <label class="visually-hidden" for="chat-text">Escribí tu mensaje</label>
-              <input id="chat-text" type="text" placeholder="Escribí un mensaje…" autocomplete="off" maxlength="120" />
-              <button class="chat-send" type="submit" aria-label="Enviar mensaje">
+            <div class="chat-input" aria-hidden="true">
+              <input type="text" placeholder="Escribí un mensaje…" disabled tabindex="-1" />
+              <span class="chat-send">
                 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12 L21 3 L15 12 L21 21 Z" /></svg>
-              </button>
-            </form>
+              </span>
+            </div>
           </div>
 
           <!-- Backstage -->
@@ -223,33 +229,6 @@
       </div>
     </section>
 
-    <!-- ===================== CASOS ===================== -->
-    <section class="casos section-paper" id="casos">
-      <div class="container">
-        <p class="sec-label"><span class="chev" aria-hidden="true">&lt;</span> Resultados</p>
-        <h2 class="casos-title">Los resultados hablan.<br><em>Pronto, acá.</em></h2>
-        <p class="casos-lead">Estamos midiendo los primeros casos con clientes reales. Cuando haya números, van a estar acá — reales, verificables, sin inflar. Mostrar, no presumir.</p>
-
-        <div class="casos-grid">
-          <article class="caso-card">
-            <span class="caso-tag">[CASO 1]</span>
-            <p class="caso-desc">Horas por semana recuperadas al automatizar la carga de pedidos.</p>
-            <span class="caso-metric">— hs<span class="caso-metric-note">/ semana</span></span>
-          </article>
-          <article class="caso-card">
-            <span class="caso-tag">[CASO 2]</span>
-            <p class="caso-desc">Tiempo de respuesta a clientes: de horas a segundos.</p>
-            <span class="caso-metric">— seg<span class="caso-metric-note">de respuesta</span></span>
-          </article>
-          <article class="caso-card">
-            <span class="caso-tag">[CASO 3]</span>
-            <p class="caso-desc">Consultas atendidas fuera del horario laboral.</p>
-            <span class="caso-metric">— %<span class="caso-metric-note">fuera de hora</span></span>
-          </article>
-        </div>
-      </div>
-    </section>
-
     <!-- ===================== CTA FINAL ===================== -->
     <section class="cta section-dark" id="contacto">
       <div class="container cta-inner">
@@ -263,7 +242,28 @@
         <p class="cta-sub">Contanos cuáles. En menos de 24 horas te decimos qué se puede automatizar y cómo.</p>
         <div class="cta-actions">
           <a href="https://wa.me/5492216234812" target="_blank" rel="noopener" class="btn btn-primary btn-big">Escribinos por WhatsApp</a>
-          <a href="mailto:somosredlabs@gmail.com" class="btn btn-ghost">O por mail</a>
+        </div>
+
+        <div class="cta-form-wrap">
+          <p class="cta-form-sep"><span class="chev" aria-hidden="true">&lt;</span> ¿Preferís que te escribamos nosotros? Dejanos tu consulta:</p>
+          <form class="cta-form" id="contact-form" action="https://formsubmit.co/somosredlabs@gmail.com" method="POST">
+            <input type="hidden" name="_subject" value="Nueva consulta desde la web de REDLABS" />
+            <input type="hidden" name="_captcha" value="false" />
+            <input type="hidden" name="_template" value="table" />
+            <div class="cta-form-row">
+              <label>Tu nombre
+                <input type="text" name="Nombre" required maxlength="80" autocomplete="name" placeholder="¿Cómo te llamás?" />
+              </label>
+              <label>Tu mail o WhatsApp
+                <input type="text" name="Contacto" required maxlength="120" autocomplete="email" placeholder="Para responderte" />
+              </label>
+            </div>
+            <label>Tu consulta
+              <textarea name="Mensaje" required rows="4" maxlength="1000" placeholder="Contanos qué tareas te gustaría sacarte de encima, o qué sitio web necesitás."></textarea>
+            </label>
+            <button class="btn btn-primary" type="submit">Enviar consulta</button>
+            <p class="cta-form-status" id="form-status" role="status" aria-live="polite"></p>
+          </form>
         </div>
       </div>
     </section>

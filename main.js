@@ -33,8 +33,8 @@ addEventListener('keydown', e => {
 /* ---------- Revelado al entrar (progresivo: sin JS no pasa nada) ---------- */
 if (!reduced) {
   const targets = document.querySelectorAll(
-    '.qh-title, .qh-card, .demo-title, .demo-lead, .demo-grid > *, ' +
-    '.casos-title, .casos-lead, .caso-card, .cta-title, .cta-sub, .cta-actions'
+    '.qh-title, .qh-card, .qh-ej, .demo-title, .demo-lead, .demo-grid > *, ' +
+    '.cta-title, .cta-sub, .cta-actions, .cta-form-wrap'
   );
   targets.forEach(el => el.classList.add('rv'));
   const io = new IntersectionObserver(entries => {
@@ -109,8 +109,6 @@ if (!reduced && ctPath) {
    DEMO — chat simulado + "detrás de escena"
    ============================================================= */
 const chatLog = document.getElementById('chat-log');
-const chatForm = document.getElementById('chat-form');
-const chatText = document.getElementById('chat-text');
 const feed = document.getElementById('backstage-feed');
 const sheetBody = document.getElementById('sheet-body');
 
@@ -202,7 +200,6 @@ function handleMessage(text) {
   greetTimers.forEach(clearTimeout);
   greetTimers = [];
   addMsg(text.trim(), 'user');
-  chatText.value = '';
   const intent = INTENTS.find(i => i.match.test(text)) || FALLBACK;
 
   setTimeout(() => {
@@ -216,10 +213,6 @@ function handleMessage(text) {
   }, reduced ? 30 : 350);
 }
 
-chatForm.addEventListener('submit', e => {
-  e.preventDefault();
-  handleMessage(chatText.value);
-});
 document.querySelectorAll('.sug').forEach(btn => {
   btn.addEventListener('click', () => handleMessage(btn.dataset.msg));
 });
@@ -231,8 +224,42 @@ new IntersectionObserver((entries, obs) => {
   greeted = true;
   obs.disconnect();
   setTimeout(() => addMsg('¡Hola! Soy Redi, el asistente de REDLABS. Estoy acá para automatizar las tareas repetitivas de tu negocio.', 'bot'), reduced ? 0 : 500);
-  greetTimers.push(setTimeout(() => addMsg('Escribime como si fueras un cliente: pedí un turno, preguntá un precio, hacé un pedido.', 'bot'), reduced ? 0 : 1600));
+  greetTimers.push(setTimeout(() => addMsg('Elegí una opción acá abajo, como si fueras un cliente, y fijate lo que pasa al lado 👇', 'bot'), reduced ? 0 : 1600));
 }, { threshold: .35 }).observe(chatLog);
+
+/* =============================================================
+   CTA — formulario de contacto (llega a somosredlabs@gmail.com)
+   ============================================================= */
+const cform = document.getElementById('contact-form');
+if (cform) {
+  const status = document.getElementById('form-status');
+  cform.addEventListener('submit', async e => {
+    e.preventDefault();
+    const btn = cform.querySelector('button[type="submit"]');
+    const orig = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = 'Enviando…';
+    status.textContent = '';
+    status.classList.remove('ok');
+    try {
+      const r = await fetch('https://formsubmit.co/ajax/somosredlabs@gmail.com', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(Object.fromEntries(new FormData(cform).entries())),
+      });
+      if (!r.ok) throw new Error('send failed');
+      cform.reset();
+      status.textContent = '¡Listo! Nos llegó tu consulta. Te respondemos en menos de 24 horas.';
+      status.classList.add('ok');
+    } catch {
+      // si el envío directo falla, va por el POST clásico del form
+      cform.submit();
+    } finally {
+      btn.disabled = false;
+      btn.textContent = orig;
+    }
+  });
+}
 
 /* =============================================================
    CTA — el isotipo se ensambla: dos piezas que se conectan
