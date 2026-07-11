@@ -8,7 +8,7 @@
 import * as THREE from './vendor/three.module.min.js';
 
 const RED = 0xEE2B24;
-const INK = 0x0C0A09;
+const INK = 0x060505;
 
 /* resorte sub-amortiguado genérico */
 function spring(obj, key, target, k, d, dt) {
