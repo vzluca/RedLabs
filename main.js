@@ -105,7 +105,7 @@ if (hflow && hTrack) {
     if (!pinned) return;
     const total = hflow.offsetHeight - innerHeight;
     const p = total > 0 ? clamp(-hflow.getBoundingClientRect().top / total, 0, 1) : 0;
-    hTrack.style.transform = `translate3d(${(-(p * dist)).toFixed(1)}px,0,0)`;
+    hTrack.style.transform = `translate3d(${Math.round(-(p * dist))}px,0,0)`;
     if (hFill) hFill.style.transform = `scaleX(${p.toFixed(3)})`;
   }
   layout(); onFlowScroll();
@@ -130,7 +130,7 @@ if (!reduced && ctPath) {
   ctPath.style.strokeDasharray = pathLen;
   ctPath.style.strokeDashoffset = pathLen;
   const nodeAt = [.09, .42, .82];
-  const c0 = [10, 9, 8], c1 = [250, 249, 247];
+  const c0 = [5, 4, 3], c1 = [250, 249, 247];
   let lastStep = -1;
 
   const update = () => {

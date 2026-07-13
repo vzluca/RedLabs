@@ -17,7 +17,7 @@
 :root {
   --red: #EE2B24;
   --red-hot: #FF4038;
-  --ink: #0A0908;
+  --ink: #050403;        /* mismo casi-negro del hero en toda la página */
   --ink-deep: #050403;
   --ink-soft: #131010;
   --paper: #FAF9F7;
@@ -320,6 +320,20 @@ main > section, .footer { scroll-margin-top: var(--nav-h); }
 
 .svc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2.5rem, 7vw, 7rem) clamp(3rem, 8vw, 8rem); }
 .svc-col { display: flex; flex-direction: column; }
+
+/* Servicios centrado: título, columnas, visuales y texto */
+.svc .sec-head { text-align: center; }
+.svc .sec-head .eyebrow { justify-content: center; }
+.svc-title { margin-inline: auto; }
+.svc-col { align-items: center; text-align: center; }
+.svc-viz { margin-inline: auto; }
+.svc-viz-flow svg, .svc-viz-web .vz-browser { margin-inline: auto; }
+.svc-name { justify-content: center; }
+.svc-name::before { content: none; }
+.svc-col > p { margin-inline: auto; }
+.svc-tools { justify-content: center; }
+.svc-list { justify-items: center; }
+.svc-list li { justify-content: center; }
 .svc-idx { color: var(--red); margin-bottom: 1.3rem; }
 
 /* ---- visuales animados de cada motor ---- */
@@ -401,15 +415,13 @@ main > section, .footer { scroll-margin-top: var(--nav-h); }
 /* Flujos — sección con scroll horizontal fijado (el scroll vertical avanza en horizontal) */
 .hflow { position: relative; background: var(--ink); }   /* la altura la fija el JS en desktop */
 .hflow-sticky { position: sticky; top: 0; height: 100svh; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; padding-block: clamp(88px, 13vh, 140px); }
-.hflow-head { position: relative; z-index: 2; display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; }
+.hflow-head { position: relative; z-index: 2; text-align: center; }
 /* riel horizontal detrás de las cards: se leen como nodos de un flujo */
 .hflow-rail { position: absolute; left: 0; right: 0; top: 50%; height: 1px; background: var(--hair-d); z-index: 0; pointer-events: none; }
 /* barra de progreso del recorrido horizontal */
 .hflow-progress { position: relative; z-index: 2; margin-inline: var(--pad-x); height: 2px; background: var(--hair-d); }
 .hflow-progress-fill { display: block; height: 100%; width: 100%; background: var(--red); transform: scaleX(0); transform-origin: left; will-change: transform; }
-.hflow-title { color: var(--tx-d-mut); }
-.hflow-hint { color: var(--tx-d-dim); display: inline-flex; align-items: center; gap: .5em; }
-.hflow-hint::after { content: "→"; color: var(--red); }
+.hflow-title { font-family: var(--f-head); font-weight: 600; font-size: clamp(1.6rem, 3.4vw, 2.6rem); letter-spacing: -.03em; line-height: 1.08; color: var(--tx-d); margin-inline: auto; max-width: 20em; }
 .hflow-viewport { position: relative; z-index: 1; overflow: hidden; }
 .hflow-track { display: flex; gap: 1.1rem; padding-left: var(--pad-x); will-change: transform; }
 /* spacer final: el padding-right en un flex no cuenta para scrollWidth, así que dejamos aire con un ítem */
@@ -422,6 +434,7 @@ main > section, .footer { scroll-margin-top: var(--nav-h); }
   padding: 1.4rem 1.5rem 1.35rem;
   clip-path: polygon(16px 0, 100% 0, 100% 100%, 0 100%, 0 16px);
   transition: transform .55s var(--spring), border-color .35s ease, background-color .35s ease;
+  backface-visibility: hidden;   /* estabiliza el borde durante el scroll horizontal */
 }
 .flow-card::after {
   content: ""; position: absolute; left: 0; bottom: 0; height: 2px; width: 100%;
@@ -439,7 +452,7 @@ main > section, .footer { scroll-margin-top: var(--nav-h); }
 }
 .flow-card:hover .flow-card-no { -webkit-text-stroke-color: rgba(238,43,36,.6); }
 .flow-card-text { color: var(--tx-d); font-size: .98rem; line-height: 1.38; margin-bottom: auto; }
-.flow-card-foot { display: flex; align-items: center; justify-content: space-between; margin-top: 1.1rem; }
+.flow-card-foot { display: flex; align-items: center; margin-top: 1.1rem; }
 .flow-card-dots { display: inline-flex; gap: .45em; }
 .flow-card-dots i { width: 8px; height: 8px; transform: rotate(45deg); display: block; }
 .flow-card-dots [data-t="n8"] { background: var(--red); }
@@ -451,8 +464,6 @@ main > section, .footer { scroll-margin-top: var(--nav-h); }
 .flow-card-dots [data-t="dr"] { background: #C7A94B; }
 .flow-card-dots [data-t="ai"] { background: #5AA79A; }
 .flow-card-dots [data-t="wh"] { background: #8B857C; }
-.flow-card-go { color: var(--red); font-family: var(--f-mono); font-size: 1rem; transition: transform .4s var(--spring); }
-.flow-card:hover .flow-card-go { transform: translateX(6px); }
 
 @media (max-width: 1023px) {
   .hflow { height: auto !important; }
@@ -573,8 +584,10 @@ main > section, .footer { scroll-margin-top: var(--nav-h); }
    FAQ (acordeón)
    ============================================================= */
 .faq { padding-bottom: clamp(84px, 12vh, 150px); }
-.faq-title { font-family: var(--f-head); font-weight: 600; font-size: clamp(1.6rem, 3.4vw, 2.6rem); letter-spacing: -.03em; line-height: 1.08; }
-.faq-list { max-width: 900px; }
+.faq .sec-head { text-align: center; }
+.faq .sec-head .eyebrow { justify-content: center; }
+.faq-title { font-family: var(--f-head); font-weight: 600; font-size: clamp(1.6rem, 3.4vw, 2.6rem); letter-spacing: -.03em; line-height: 1.08; margin-inline: auto; }
+.faq-list { max-width: 860px; margin-inline: auto; }
 .faq-item { border-top: 1px solid var(--hair-d); }
 .faq-item:last-child { border-bottom: 1px solid var(--hair-d); }
 .faq-item summary {
