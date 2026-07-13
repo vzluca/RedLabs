@@ -15,10 +15,12 @@ const indexNav = document.getElementById('index');
 const indexLinks = indexNav ? [...indexNav.querySelectorAll('a')] : [];
 const indexSections = indexLinks.map(a => document.getElementById(a.dataset.target));
 const paperSec = document.getElementById('demo');
+const waFab = document.getElementById('wa-fab');
 
 let scrollTick = false;
 function onPageScroll() {
   nav.classList.toggle('scrolled', scrollY > 30);
+  if (waFab) waFab.classList.toggle('show', scrollY > innerHeight * 0.6);
   if (scrollTick) return;
   scrollTick = true;
   requestAnimationFrame(() => {
@@ -81,6 +83,7 @@ if (!reduced) {
 /* ---------- FLUJOS — scroll horizontal fijado (el scroll vertical avanza en horizontal) ---------- */
 const hflow = document.getElementById('flujos');
 const hTrack = document.getElementById('hflow-track');
+const hFill = document.getElementById('hflow-progress-fill');
 if (hflow && hTrack) {
   const viewport = hTrack.parentElement;
   let dist = 0, pinned = false;
@@ -95,6 +98,7 @@ if (hflow && hTrack) {
       dist = 0;
       hflow.style.height = '';
       hTrack.style.transform = '';
+      if (hFill) hFill.style.transform = '';
     }
   }
   function onFlowScroll() {
@@ -102,6 +106,7 @@ if (hflow && hTrack) {
     const total = hflow.offsetHeight - innerHeight;
     const p = total > 0 ? clamp(-hflow.getBoundingClientRect().top / total, 0, 1) : 0;
     hTrack.style.transform = `translate3d(${(-(p * dist)).toFixed(1)}px,0,0)`;
+    if (hFill) hFill.style.transform = `scaleX(${p.toFixed(3)})`;
   }
   layout(); onFlowScroll();
   addEventListener('resize', () => { layout(); onFlowScroll(); }, { passive: true });
