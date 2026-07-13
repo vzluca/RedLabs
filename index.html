@@ -139,18 +139,21 @@
         </article>
       </div>
 
-      <div class="wrap svc-ej">
-        <p class="svc-ej-title mono">Flujos que dejamos corriendo solos</p>
-        <ul class="svc-ej-grid">
-          <li><span class="chev" aria-hidden="true">&lt;</span> Tu WhatsApp responde consultas las 24 hs</li>
-          <li><span class="chev" aria-hidden="true">&lt;</span> Los turnos se agendan sin ida y vuelta de mensajes</li>
-          <li><span class="chev" aria-hidden="true">&lt;</span> Mandás un audio con un gasto y ya queda registrado</li>
-          <li><span class="chev" aria-hidden="true">&lt;</span> Tus emails se clasifican y responden al instante</li>
-          <li><span class="chev" aria-hidden="true">&lt;</span> Cargás una fila en la planilla y el posteo sale solo</li>
-          <li><span class="chev" aria-hidden="true">&lt;</span> Cada interesado recibe seguimiento sin que te acuerdes</li>
-          <li><span class="chev" aria-hidden="true">&lt;</span> Un resumen de tu día, cada mañana en tu WhatsApp</li>
-          <li><span class="chev" aria-hidden="true">&lt;</span> Presupuestos armados y enviados en el momento</li>
-        </ul>
+      <div class="svc-flows">
+        <div class="wrap svc-flows-head">
+          <p class="svc-flows-title mono">Flujos que dejamos corriendo solos</p>
+          <p class="svc-flows-hint mono">Arrastrá</p>
+        </div>
+        <div class="svc-flows-track" id="svc-flows">
+          <article class="svc-flow"><span class="svc-flow-idx mono">01</span><span class="svc-flow-sq" aria-hidden="true"></span><p>Tu WhatsApp responde consultas las 24 hs, sin que estés vos.</p></article>
+          <article class="svc-flow"><span class="svc-flow-idx mono">02</span><span class="svc-flow-sq" aria-hidden="true"></span><p>Los turnos se agendan solos, sin ida y vuelta de mensajes.</p></article>
+          <article class="svc-flow"><span class="svc-flow-idx mono">03</span><span class="svc-flow-sq" aria-hidden="true"></span><p>Mandás un audio con un gasto y ya queda registrado en tu planilla.</p></article>
+          <article class="svc-flow"><span class="svc-flow-idx mono">04</span><span class="svc-flow-sq" aria-hidden="true"></span><p>Tus emails se clasifican y responden al instante.</p></article>
+          <article class="svc-flow"><span class="svc-flow-idx mono">05</span><span class="svc-flow-sq" aria-hidden="true"></span><p>Cargás una fila en la planilla y el posteo sale solo.</p></article>
+          <article class="svc-flow"><span class="svc-flow-idx mono">06</span><span class="svc-flow-sq" aria-hidden="true"></span><p>Cada interesado recibe seguimiento sin que te tengas que acordar.</p></article>
+          <article class="svc-flow"><span class="svc-flow-idx mono">07</span><span class="svc-flow-sq" aria-hidden="true"></span><p>Un resumen de tu día, cada mañana en tu WhatsApp.</p></article>
+          <article class="svc-flow"><span class="svc-flow-idx mono">08</span><span class="svc-flow-sq" aria-hidden="true"></span><p>Presupuestos armados y enviados en el momento.</p></article>
+        </div>
       </div>
     </section>
 
@@ -263,50 +266,52 @@
         <div class="cta-actions">
           <a href="https://wa.me/5492216234812" target="_blank" rel="noopener" class="btn btn-primary">Escribinos por WhatsApp</a>
         </div>
-
-        <div class="cta-form-wrap">
-          <p class="cta-form-sep mono">¿Preferís que te escribamos nosotros?</p>
-          <form class="cta-form" id="contact-form" action="https://formsubmit.co/somosredlabs@gmail.com" method="POST">
-            <input type="hidden" name="_subject" value="Nueva consulta desde la web de REDLABS" />
-            <input type="hidden" name="_captcha" value="false" />
-            <input type="hidden" name="_template" value="table" />
-            <div class="cta-form-row">
-              <label>Tu nombre
-                <input type="text" name="Nombre" required maxlength="80" autocomplete="name" placeholder="¿Cómo te llamás?" />
-              </label>
-              <label>Tu mail o WhatsApp
-                <input type="text" name="Contacto" required maxlength="120" autocomplete="email" placeholder="Para responderte" />
-              </label>
-            </div>
-            <label>Tu consulta
-              <textarea name="Mensaje" required rows="4" maxlength="1000" placeholder="Contanos qué tareas te gustaría sacarte de encima, o qué sitio web necesitás."></textarea>
-            </label>
-            <button class="btn btn-primary" type="submit">Enviar consulta</button>
-            <p class="cta-form-status" id="form-status" role="status" aria-live="polite"></p>
-          </form>
-        </div>
       </div>
     </section>
 
   </main>
 
-  <!-- ===================== FOOTER ===================== -->
+  <!-- ===================== FOOTER (form | marca) ===================== -->
   <footer class="footer">
-    <div class="footer-inner">
-      <a href="#inicio" class="footer-logo" aria-label="REDLABS — volver arriba">
-        <svg class="nav-mark" viewBox="0 0 1200 1329" aria-hidden="true">
-          <path d="M728 120 L283 120 L121 339 L120 1208 L361 1208 L361 341 L574 331 Z"/>
-          <path d="M814 120 L432 647 L817 1208 L1079 1208 L695 652 L1072 120 Z"/>
-        </svg>
-        <span class="nav-word">REDLABS</span>
-      </a>
-      <p class="footer-tag">Automatización con IA &amp; sitios a medida</p>
-      <nav class="footer-links" aria-label="Contacto">
-        <a href="https://wa.me/5492216234812" target="_blank" rel="noopener">WhatsApp</a>
-        <a href="https://instagram.com/somosredlabs" target="_blank" rel="noopener">Instagram</a>
-        <a href="mailto:somosredlabs@gmail.com">Mail</a>
-      </nav>
-      <p class="footer-legal">© 2026 REDLABS</p>
+    <div class="footer-grid">
+      <div class="footer-col footer-form-col">
+        <p class="footer-head mono">Dejanos tu consulta</p>
+        <form class="cta-form" id="contact-form" action="https://formsubmit.co/somosredlabs@gmail.com" method="POST">
+          <input type="hidden" name="_subject" value="Nueva consulta desde la web de REDLABS" />
+          <input type="hidden" name="_captcha" value="false" />
+          <input type="hidden" name="_template" value="table" />
+          <div class="cta-form-row">
+            <label>Tu nombre
+              <input type="text" name="Nombre" required maxlength="80" autocomplete="name" placeholder="¿Cómo te llamás?" />
+            </label>
+            <label>Tu mail o WhatsApp
+              <input type="text" name="Contacto" required maxlength="120" autocomplete="email" placeholder="Para responderte" />
+            </label>
+          </div>
+          <label>Tu consulta
+            <textarea name="Mensaje" required rows="4" maxlength="1000" placeholder="Contanos qué tareas te gustaría sacarte de encima, o qué sitio web necesitás."></textarea>
+          </label>
+          <button class="btn btn-primary" type="submit">Enviar consulta</button>
+          <p class="cta-form-status" id="form-status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+
+      <div class="footer-col footer-info-col">
+        <a href="#inicio" class="footer-logo" aria-label="REDLABS — volver arriba">
+          <svg class="nav-mark" viewBox="0 0 1200 1329" aria-hidden="true">
+            <path d="M728 120 L283 120 L121 339 L120 1208 L361 1208 L361 341 L574 331 Z"/>
+            <path d="M814 120 L432 647 L817 1208 L1079 1208 L695 652 L1072 120 Z"/>
+          </svg>
+          <span class="nav-word">REDLABS</span>
+        </a>
+        <p class="footer-tag">Automatización con IA &amp; sitios web a medida. Menos tareas repetitivas, más negocio funcionando solo.</p>
+        <nav class="footer-contact" aria-label="Contacto">
+          <a href="https://wa.me/5492216234812" target="_blank" rel="noopener" data-k="WhatsApp">+54 9 221 623 4812</a>
+          <a href="https://instagram.com/somosredlabs" target="_blank" rel="noopener" data-k="Instagram">@somosredlabs</a>
+          <a href="mailto:somosredlabs@gmail.com" data-k="Mail">somosredlabs@gmail.com</a>
+        </nav>
+        <p class="footer-legal">© 2026 REDLABS — Hecho por nosotros, de punta a punta.</p>
+      </div>
     </div>
   </footer>
 
