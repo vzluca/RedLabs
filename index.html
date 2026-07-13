@@ -24,7 +24,8 @@
     <a href="#servicios" data-target="servicios"><span class="ix-line"></span><span class="ix-num">01</span></a>
     <a href="#proceso"  data-target="proceso"><span class="ix-line"></span><span class="ix-num">02</span></a>
     <a href="#demo"     data-target="demo"><span class="ix-line"></span><span class="ix-num">03</span></a>
-    <a href="#contacto" data-target="contacto"><span class="ix-line"></span><span class="ix-num">04</span></a>
+    <a href="#faq"      data-target="faq"><span class="ix-line"></span><span class="ix-num">04</span></a>
+    <a href="#contacto" data-target="contacto"><span class="ix-line"></span><span class="ix-num">05</span></a>
   </nav>
 
   <!-- ===================== NAV ===================== -->
@@ -40,6 +41,7 @@
       <a href="#servicios">Servicios</a>
       <a href="#proceso">Proceso</a>
       <a href="#demo">Demo</a>
+      <a href="#faq">FAQ</a>
       <a href="#contacto" class="btn btn-nav">Hablemos</a>
     </nav>
     <button class="nav-burger" id="burger" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu">
@@ -51,7 +53,8 @@
     <a href="#servicios" class="mobile-link"><span class="mono">01</span>Servicios</a>
     <a href="#proceso" class="mobile-link"><span class="mono">02</span>Proceso</a>
     <a href="#demo" class="mobile-link"><span class="mono">03</span>Demo</a>
-    <a href="#contacto" class="mobile-link mobile-link-cta"><span class="mono">04</span>Hablemos</a>
+    <a href="#faq" class="mobile-link"><span class="mono">04</span>Preguntas</a>
+    <a href="#contacto" class="mobile-link mobile-link-cta"><span class="mono">05</span>Hablemos</a>
   </div>
 
   <main>
@@ -108,6 +111,26 @@
       <div class="wrap svc-grid">
         <article class="svc-col">
           <p class="svc-idx mono">A — Automatización</p>
+          <div class="svc-viz svc-viz-flow" aria-hidden="true">
+            <svg viewBox="0 0 300 140" preserveAspectRatio="xMidYMid meet">
+              <g class="vz-wires" fill="none" stroke-width="1.5">
+                <path d="M62 39 C 95 39, 118 70, 150 70"/>
+                <path d="M62 101 C 95 101, 118 70, 150 70"/>
+                <path d="M150 70 C 182 70, 205 39, 238 39"/>
+                <path d="M150 70 C 182 70, 205 101, 238 101"/>
+              </g>
+              <g class="vz-nodes">
+                <g class="vz-node"><rect x="18" y="26" width="44" height="26" rx="4"/><circle cx="30" cy="39" r="3.2" fill="#3FA26C"/></g>
+                <g class="vz-node"><rect x="18" y="88" width="44" height="26" rx="4"/><circle cx="30" cy="101" r="3.2" fill="#7A6FA3"/></g>
+                <g class="vz-node vz-brain"><rect x="128" y="52" width="44" height="36" rx="6"/></g>
+                <g class="vz-node"><rect x="238" y="26" width="44" height="26" rx="4"/><circle cx="250" cy="39" r="3.2" fill="#2E7D53"/></g>
+                <g class="vz-node"><rect x="238" y="88" width="44" height="26" rx="4"/><circle cx="250" cy="101" r="3.2" fill="#4A7BC4"/></g>
+              </g>
+              <circle class="vz-pulse" r="3.6">
+                <animateMotion dur="2.8s" repeatCount="indefinite" calcMode="spline" keyTimes="0;1" keySplines="0.4 0 0.2 1" path="M62 39 C 95 39,118 70,150 70 C 182 70,205 101,238 101"/>
+              </circle>
+            </svg>
+          </div>
           <h3 class="svc-name">Tus apps, conectadas</h3>
           <p>Un cliente escribe, y el pedido ya está en tu planilla. Llega un formulario, y la respuesta sale sola. Entra un archivo, y se guarda donde va. Todo pasa en segundos, sin que nadie lo toque.</p>
           <ul class="svc-tools" aria-label="Herramientas que conectamos">
@@ -129,6 +152,19 @@
 
         <article class="svc-col">
           <p class="svc-idx mono">B — Sitios web</p>
+          <div class="svc-viz svc-viz-web" aria-hidden="true">
+            <div class="vz-browser">
+              <div class="vz-bar"><i></i><i></i><i></i><span class="vz-url"></span></div>
+              <div class="vz-screen">
+                <div class="vz-block"></div>
+                <div class="vz-ln"></div>
+                <div class="vz-ln s"></div>
+                <div class="vz-row"><span></span><span></span><span></span></div>
+                <div class="vz-load"><b></b></div>
+                <span class="vz-cursor"></span>
+              </div>
+            </div>
+          </div>
           <h3 class="svc-name">Sitios que trabajan por vos</h3>
           <p>Landing pages y sitios a medida: rápidos, claros y pensados para convertir visitas en clientes. Diseñados y construidos por nosotros de punta a punta. Como este que estás viendo.</p>
           <ul class="svc-list">
@@ -290,6 +326,36 @@
           </div>
           <p class="backstage-note">Nadie tocó nada. Así se ve una tarea que dejó de ser tuya.</p>
         </div>
+      </div>
+    </section>
+
+    <!-- ===================== FAQ ===================== -->
+    <section class="faq section-dark" id="faq">
+      <div class="wrap sec-head">
+        <p class="eyebrow mono">04 / Preguntas</p>
+        <h2 class="faq-title">Lo que se suele preguntar.</h2>
+      </div>
+      <div class="wrap faq-list">
+        <details class="faq-item">
+          <summary>¿Cuánto tarda en estar funcionando?<span class="faq-plus" aria-hidden="true"></span></summary>
+          <div class="faq-a"><p>Depende del flujo, pero la mayoría queda andando en días, no en meses. En la primera charla te damos un estimado concreto.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>¿Tengo que cambiar las apps que uso?<span class="faq-plus" aria-hidden="true"></span></summary>
+          <div class="faq-a"><p>No. Trabajamos con lo que ya usás: tu WhatsApp sigue siendo tu WhatsApp y tu planilla sigue siendo tu planilla. Nosotros solo las conectamos entre sí.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>¿Cuánto cuesta?<span class="faq-plus" aria-hidden="true"></span></summary>
+          <div class="faq-a"><p>Cada automatización es distinta, así que armamos un presupuesto a medida. Escribinos y en menos de 24 horas te decimos qué se puede hacer y cuánto sale, sin compromiso.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>¿Y si algo se rompe o deja de andar?<span class="faq-plus" aria-hidden="true"></span></summary>
+          <div class="faq-a"><p>Nos quedamos cerca: monitoreamos los flujos y los mantenemos funcionando. Si algo falla, lo resolvemos nosotros — vos ni te enterás.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>¿También hacen la página web?<span class="faq-plus" aria-hidden="true"></span></summary>
+          <div class="faq-a"><p>Sí. Diseñamos y construimos sitios a medida de punta a punta — como este — y los enchufamos directo a tus automatizaciones.</p></div>
+        </details>
       </div>
     </section>
 

@@ -18,7 +18,7 @@ el dedo (inercia + giro lento en reposo). Detalles firma: índice lateral
 
 | Archivo | Qué es |
 |---|---|
-| `index.html` | La página completa |
+| `index.html` | La página completa (hero, servicios con visuales animados, flujos con scroll horizontal fijado, proceso, demo, FAQ, contacto/footer) |
 | `style.css` | Sistema de marca (rojo `#EE2B24`, tinta `#0A0908`, papel `#FAF9F7`). Titulares en Instrument Sans; letra técnica en monospace del sistema |
 | `main.js` | Nav, índice lateral, progreso de scroll, scroll-storytelling, demo de chat, ensamblado del isotipo del CTA, hint del hero |
 | `hero3d.js` | Hero WebGL: el isotipo como objeto físico interactivo (se agarra y gira con inercia). Carga diferida; fallback estático si no hay WebGL o hay `prefers-reduced-motion` |
