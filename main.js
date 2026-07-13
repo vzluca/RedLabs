@@ -56,7 +56,7 @@ addEventListener('keydown', e => {
 /* ---------- Revelado al entrar ---------- */
 if (!reduced) {
   const targets = document.querySelectorAll(
-    '.svc-title, .svc-col, .svc-flows, .demo-title, .demo-lead, .demo-grid > *, ' +
+    '.svc-title, .svc-col, .demo-title, .demo-lead, .demo-grid > *, ' +
     '.cta-title, .cta-sub, .cta-actions'
   );
   targets.forEach(el => el.classList.add('rv'));
@@ -72,36 +72,36 @@ if (!reduced) {
   targets.forEach(el => io.observe(el));
 }
 
-/* ---------- SERVICIOS — carrusel horizontal (arrastre) ---------- */
-const flows = document.getElementById('svc-flows');
-if (flows) {
-  let down = false, startX = 0, startLeft = 0, moved = 0;
-  flows.addEventListener('pointerdown', e => {
-    down = true; moved = 0;
-    startX = e.clientX; startLeft = flows.scrollLeft;
-    flows.classList.add('drag');
-    try { flows.setPointerCapture(e.pointerId); } catch {}
-  });
-  flows.addEventListener('pointermove', e => {
-    if (!down) return;
-    const dx = e.clientX - startX;
-    moved = Math.max(moved, Math.abs(dx));
-    flows.scrollLeft = startLeft - dx;
-  });
-  const end = e => {
-    if (!down) return;
-    down = false;
-    flows.classList.remove('drag');
-    try { flows.releasePointerCapture(e.pointerId); } catch {}
-  };
-  flows.addEventListener('pointerup', end);
-  flows.addEventListener('pointercancel', end);
-  // evita el "salto" de foco al soltar tras arrastrar
-  flows.addEventListener('click', e => { if (moved > 6) { e.preventDefault(); e.stopPropagation(); } }, true);
-  // rueda vertical → desplazamiento horizontal cuando el cursor está encima
-  flows.addEventListener('wheel', e => {
-    if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) { flows.scrollLeft += e.deltaY; e.preventDefault(); }
-  }, { passive: false });
+/* ---------- FLUJOS — scroll horizontal fijado (el scroll vertical avanza en horizontal) ---------- */
+const hflow = document.getElementById('flujos');
+const hTrack = document.getElementById('hflow-track');
+if (hflow && hTrack) {
+  const viewport = hTrack.parentElement;
+  let dist = 0, pinned = false;
+  const isPinned = () => innerWidth >= 1024 && !reduced;
+
+  function layout() {
+    pinned = isPinned();
+    if (pinned) {
+      dist = Math.max(0, hTrack.scrollWidth - viewport.clientWidth);
+      hflow.style.height = (innerHeight + dist) + 'px';
+    } else {
+      dist = 0;
+      hflow.style.height = '';
+      hTrack.style.transform = '';
+    }
+  }
+  function onFlowScroll() {
+    if (!pinned) return;
+    const total = hflow.offsetHeight - innerHeight;
+    const p = total > 0 ? clamp(-hflow.getBoundingClientRect().top / total, 0, 1) : 0;
+    hTrack.style.transform = `translate3d(${(-(p * dist)).toFixed(1)}px,0,0)`;
+  }
+  layout(); onFlowScroll();
+  addEventListener('resize', () => { layout(); onFlowScroll(); }, { passive: true });
+  addEventListener('scroll', onFlowScroll, { passive: true });
+  // el ancho del track cambia cuando cargan las fuentes → recalcular
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { layout(); onFlowScroll(); });
 }
 
 /* =============================================================

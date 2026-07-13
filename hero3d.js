@@ -90,25 +90,19 @@ export function initHero(container) {
 
   /* ---- rotación interactiva con inercia ---- */
   const rot = { y: -.35, x: .05, vy: 0, vx: 0 };
-  const AUTOSPIN = 0.0024, SENS = 0.0085;
-  let boost = 0;                              // envión de giro extra (decae solo)
+  const AUTOSPIN = 0.0026, SENS = 0.0085;    // giro constante, siempre igual
   const lean = { x: 0, z: 0 };                // inclinación hacia el cursor
   let dragging = false, lastX = 0, lastY = 0, everDragged = false;
   const canvas = renderer.domElement;
 
-  // envión inicial + envión periódico: gira brevemente más rápido
-  setTimeout(() => { boost = 0.055; }, 700);
-  const boostTimer = setInterval(() => { if (!dragging && !document.hidden) boost = 0.05; }, 6500);
-
   function down(e) {
     dragging = true;
     everDragged = true;
-    canvas.classList.add('grabbing');
+    container.classList.add('grabbing');
     lastX = e.clientX; lastY = e.clientY;
     rot.vy = rot.vx = 0;
     emissive = 1;
     dispatchEvent(new CustomEvent('rl:herodrag'));
-    try { canvas.setPointerCapture(e.pointerId); } catch {}
   }
   function move(e) {
     if (!dragging) { mouse.x = (e.clientX / innerWidth) * 2 - 1; mouse.y = (e.clientY / innerHeight) * 2 - 1; return; }
@@ -117,16 +111,14 @@ export function initHero(container) {
     rot.y += dx * SENS; rot.vy = dx * SENS;
     rot.x = clamp(rot.x + dy * SENS, -1.0, 1.0); rot.vx = dy * SENS;
   }
-  function up(e) {
+  function up() {
     if (!dragging) return;
     dragging = false;
-    canvas.classList.remove('grabbing');
-    try { canvas.releasePointerCapture(e.pointerId); } catch {}
+    container.classList.remove('grabbing');
   }
   canvas.addEventListener('pointerdown', down);
   addEventListener('pointermove', move, { passive: true });
   addEventListener('pointerup', up, { passive: true });
-  addEventListener('pointercancel', up, { passive: true });
 
   const mouse = { x: 0, y: 0 };
   let emissive = 0;
@@ -164,11 +156,10 @@ export function initHero(container) {
     const asmProg = 1 - Math.min(1, (Math.abs(asm.rx) + Math.abs(asm.cx)) / 5.2);
     pieceR.material.opacity = pieceC.material.opacity = Math.min(1, asmProg * 1.6 + (asm.started ? .12 : 0));
 
-    /* rotación: arrastre directo, o inercia + giro lento + envión */
+    /* rotación: arrastre directo, o inercia + giro constante */
     if (!dragging) {
-      rot.y += rot.vy + AUTOSPIN + boost;
+      rot.y += rot.vy + AUTOSPIN;
       rot.vy *= 0.95;
-      boost *= 0.965;                 // el envión se va apagando
       rot.x += rot.vx; rot.vx *= 0.9;
       rot.x += (0 - rot.x) * 0.018;   // vuelve suave al nivel
     }
