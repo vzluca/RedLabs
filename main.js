@@ -14,6 +14,7 @@ const progress = document.getElementById('scroll-progress');
 const indexNav = document.getElementById('index');
 const indexLinks = indexNav ? [...indexNav.querySelectorAll('a')] : [];
 const indexSections = indexLinks.map(a => document.getElementById(a.dataset.target));
+const paperSec = document.getElementById('demo');
 
 let scrollTick = false;
 function onPageScroll() {
@@ -29,6 +30,11 @@ function onPageScroll() {
     let active = 0;
     indexSections.forEach((sec, i) => { if (sec && sec.offsetTop <= mid) active = i; });
     indexLinks.forEach((a, i) => a.classList.toggle('on', i === active));
+    // el índice se invierte sobre la sección de fondo claro (demo)
+    if (indexNav && paperSec) {
+      const t = paperSec.offsetTop, bt = t + paperSec.offsetHeight;
+      indexNav.classList.toggle('on-light', mid >= t && mid < bt);
+    }
     scrollTick = false;
   });
 }
@@ -165,7 +171,7 @@ const sheetBody = document.getElementById('sheet-body');
 
 const INTENTS = [
   {
-    match: /turno|reserva|agenda|cita|hora/i,
+    match: /turno|reserva|agenda|cita/i,
     reply: 'Perfecto 👍 Tengo lugar el jueves a las 15:30. Te lo dejo reservado y te llega la confirmación al toque.',
     motivo: 'Turno', estado: 'Confirmado',
     steps: ['Mensaje recibido', 'Turno detectado en la agenda', 'Fila agregada a tu planilla', 'Confirmación enviada por mail'],
@@ -233,8 +239,9 @@ function runBackstage(intent) {
     tr.innerHTML = `<td>${nowHM()}</td><td>Vos</td><td></td><td><span class="tag-done"></span></td>`;
     tr.children[2].textContent = intent.motivo;
     tr.querySelector('.tag-done').textContent = intent.estado;
+    // una sola fila: se reinicia de cero con cada opción (no se acumula)
+    sheetBody.innerHTML = '';
     sheetBody.appendChild(tr);
-    while (sheetBody.children.length > 4) sheetBody.removeChild(sheetBody.firstChild);
   }, 350 + Math.min(2, intent.steps.length - 1) * 420);
 }
 
