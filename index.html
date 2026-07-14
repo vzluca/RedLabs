@@ -3,19 +3,37 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>REDLABS — Dejá que tus apps se hablen entre ellas</title>
-  <meta name="description" content="Automatizamos las tareas repetitivas de tu negocio conectando las herramientas que ya usás: WhatsApp, Gmail, Google Sheets, Forms y Drive. También construimos sitios web a medida." />
-  <meta property="og:title" content="REDLABS — Dejá que tus apps se hablen entre ellas" />
-  <meta property="og:description" content="Automatización con IA para tareas repetitivas, con las herramientas que ya usás. Y sitios web a medida." />
+  <title>REDLABS — Automatización con IA & sitios a medida</title>
+  <meta name="description" content="Diseñamos flujos de automatización con IA sobre n8n que conectan las apps que ya usás — WhatsApp, Gmail, Sheets, Forms, Drive — y sitios web a medida que se enchufan a ellos." />
+  <meta property="og:title" content="REDLABS — Automatización con IA & sitios a medida" />
+  <meta property="og:description" content="Flujos de automatización con IA sobre n8n, y sitios web a medida. Menos tareas repetitivas, más negocio funcionando solo." />
   <meta property="og:type" content="website" />
+  <meta property="og:image" content="assets/og.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="REDLABS — Automatización con IA & sitios a medida" />
+  <meta name="twitter:description" content="Flujos de automatización con IA sobre n8n, y sitios web a medida." />
+  <meta name="twitter:image" content="assets/og.png" />
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
-  <link rel="preload" href="assets/fonts/tomorrow-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="assets/fonts/instrument-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="assets/fonts/instrument-sans-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <a class="skip-link" href="#que-hacemos">Saltar al contenido</a>
+  <a class="skip-link" href="#servicios">Saltar al contenido</a>
+  <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
+
+  <!-- Índice lateral -->
+  <nav class="index" id="index" aria-label="Índice de secciones">
+    <a href="#inicio"   data-target="inicio"><span class="ix-line"></span><span class="ix-num">00</span></a>
+    <a href="#servicios" data-target="servicios"><span class="ix-line"></span><span class="ix-num">01</span></a>
+    <a href="#proceso"  data-target="proceso"><span class="ix-line"></span><span class="ix-num">02</span></a>
+    <a href="#demo"     data-target="demo"><span class="ix-line"></span><span class="ix-num">03</span></a>
+    <a href="#faq"      data-target="faq"><span class="ix-line"></span><span class="ix-num">04</span></a>
+    <a href="#contacto" data-target="contacto"><span class="ix-line"></span><span class="ix-num">05</span></a>
+  </nav>
 
   <!-- ===================== NAV ===================== -->
   <header class="nav" id="nav">
@@ -27,9 +45,10 @@
       <span class="nav-word">REDLABS</span>
     </a>
     <nav class="nav-links" aria-label="Principal">
-      <a href="#que-hacemos">Qué hacemos</a>
-      <a href="#como-trabajamos">Cómo trabajamos</a>
-      <a href="#demo">Probalo</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#proceso">Proceso</a>
+      <a href="#demo">Demo</a>
+      <a href="#faq">FAQ</a>
       <a href="#contacto" class="btn btn-nav">Hablemos</a>
     </nav>
     <button class="nav-burger" id="burger" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu">
@@ -38,27 +57,23 @@
   </header>
 
   <div class="mobile-menu" id="mobile-menu" hidden>
-    <a href="#que-hacemos" class="mobile-link">Qué hacemos</a>
-    <a href="#como-trabajamos" class="mobile-link">Cómo trabajamos</a>
-    <a href="#demo" class="mobile-link">Probalo</a>
-    <a href="#contacto" class="mobile-link mobile-link-cta">Hablemos</a>
+    <a href="#servicios" class="mobile-link"><span class="mono">01</span>Servicios</a>
+    <a href="#proceso" class="mobile-link"><span class="mono">02</span>Proceso</a>
+    <a href="#demo" class="mobile-link"><span class="mono">03</span>Demo</a>
+    <a href="#faq" class="mobile-link"><span class="mono">04</span>Preguntas</a>
+    <a href="#contacto" class="mobile-link mobile-link-cta"><span class="mono">05</span>Hablemos</a>
   </div>
 
   <main>
 
     <!-- ===================== HERO ===================== -->
     <section class="hero" id="inicio">
+      <div class="hero-glow" aria-hidden="true"></div>
       <div class="hero-canvas" id="hero-canvas" aria-hidden="true"></div>
 
       <!-- Fallback estático: reduced-motion / sin WebGL -->
       <div class="hero-static" id="hero-static" aria-hidden="true">
         <svg viewBox="0 0 1200 1329">
-          <g fill="none" stroke="#FBFAF9" stroke-opacity=".14" stroke-width="3">
-            <path d="M-80 300 Q 250 380, 520 620" />
-            <path d="M-60 1050 Q 300 950, 500 760" />
-            <path d="M1290 200 Q 1050 320, 900 480" />
-            <path d="M1300 1150 Q 1080 1000, 960 840" />
-          </g>
           <g fill="#EE2B24">
             <path d="M728 120 L283 120 L121 339 L120 1208 L361 1208 L361 341 L574 331 Z"/>
             <path d="M814 120 L432 647 L817 1208 L1079 1208 L695 652 L1072 120 Z"/>
@@ -66,82 +81,170 @@
         </svg>
       </div>
 
-      <div class="hero-chips" id="hero-chips" aria-hidden="true"></div>
+      <div class="hero-veil" aria-hidden="true"></div>
 
-      <div class="hero-content">
-        <p class="hero-eyebrow"><span class="chev" aria-hidden="true">&lt;</span> Automatización con IA · Sitios web</p>
-        <h1 class="hero-title">Dejá que tus apps<br>se hablen entre ellas.</h1>
-        <p class="hero-sub">Automatizamos las tareas repetitivas de tu negocio con las herramientas que ya usás. Y construimos sitios web a medida — como este.</p>
-        <div class="hero-actions">
-          <a href="#contacto" class="btn btn-primary">Quiero automatizar</a>
-          <a href="#demo" class="btn btn-ghost">Ver cómo funciona</a>
+      <div class="hero-hint" id="hero-hint" aria-hidden="true">
+        <span class="hero-hint-ring"></span>
+        <span class="mono">Arrastrá para girar</span>
+      </div>
+
+      <div class="hero-body">
+        <div class="hero-content">
+          <p class="hero-eyebrow eyebrow mono">Automatización IA · n8n · Web</p>
+          <h1 class="hero-title">Tu negocio, conectado.<br><em>Trabajando solo.</em></h1>
+          <p class="hero-sub">Diseñamos flujos de automatización con IA sobre n8n que conectan las apps que ya usás — y sitios web a medida que se enchufan a ellos. Como este.</p>
+          <div class="hero-actions">
+            <a href="#contacto" class="btn btn-primary">Quiero automatizar</a>
+            <a href="#demo" class="btn btn-ghost">Ver la demo</a>
+          </div>
         </div>
       </div>
 
-      <a class="hero-scroll" href="#que-hacemos" aria-label="Bajar a la siguiente sección">
-        <span class="hero-scroll-chev" aria-hidden="true">&lt;</span>
-      </a>
+      <div class="hero-ticker" aria-hidden="true">
+        <div class="hero-ticker-row">
+          <span>n8n</span><span>WhatsApp</span><span>Instagram</span><span>Gmail</span><span>Google Sheets</span><span>Forms</span><span>Drive</span><span>Calendar</span><span>Notion</span><span>Meta Business</span><span>360dialog</span><span>GPT-4o</span><span>Whisper</span>
+          <span>n8n</span><span>WhatsApp</span><span>Instagram</span><span>Gmail</span><span>Google Sheets</span><span>Forms</span><span>Drive</span><span>Calendar</span><span>Notion</span><span>Meta Business</span><span>360dialog</span><span>GPT-4o</span><span>Whisper</span>
+        </div>
+      </div>
     </section>
 
-    <!-- ===================== QUÉ HACEMOS ===================== -->
-    <section class="qh section-dark" id="que-hacemos">
-      <div class="container">
-        <p class="sec-label"><span class="chev" aria-hidden="true">&lt;</span> Qué hacemos</p>
-        <h2 class="qh-title">Las tareas que te comen el día,<br><em>hechas solas.</em></h2>
+    <!-- ===================== SERVICIOS ===================== -->
+    <section class="svc section-dark" id="servicios">
+      <div class="wrap sec-head">
+        <p class="eyebrow mono">01 / Servicios</p>
+        <h2 class="svc-title">Dos motores para el mismo objetivo:<br><em>que tu negocio corra solo.</em></h2>
+      </div>
 
-        <div class="qh-grid">
-          <article class="qh-card">
-            <h3 class="qh-card-title">Tus apps, conectadas</h3>
-            <p>Un cliente escribe, y el pedido ya está en tu planilla. Llega un formulario, y la respuesta sale sola. Entra un archivo, y se guarda donde va. Todo pasa en segundos, sin que nadie lo toque.</p>
-            <ul class="qh-tools" aria-label="Herramientas que conectamos">
-              <li class="tool-chip" data-tool="wa"><span class="tool-dot"></span>WhatsApp</li>
-              <li class="tool-chip" data-tool="ig"><span class="tool-dot"></span>Instagram</li>
-              <li class="tool-chip" data-tool="gm"><span class="tool-dot"></span>Gmail</li>
-              <li class="tool-chip" data-tool="sh"><span class="tool-dot"></span>Google Sheets</li>
-              <li class="tool-chip" data-tool="fo"><span class="tool-dot"></span>Google Forms</li>
-              <li class="tool-chip" data-tool="dr"><span class="tool-dot"></span>Google Drive</li>
-              <li class="tool-chip" data-tool="ca"><span class="tool-dot"></span>Google Calendar</li>
-              <li class="tool-chip" data-tool="no"><span class="tool-dot"></span>Notion</li>
-              <li class="tool-chip" data-tool="mt"><span class="tool-dot"></span>Meta Business</li>
-              <li class="tool-chip" data-tool="dl"><span class="tool-dot"></span>360dialog</li>
-              <li class="tool-chip" data-tool="ai"><span class="tool-dot"></span>GPT-4o</li>
-              <li class="tool-chip" data-tool="wh"><span class="tool-dot"></span>Whisper</li>
-            </ul>
-          </article>
-
-          <article class="qh-card">
-            <h3 class="qh-card-title">Sitios que trabajan por vos</h3>
-            <p>Landing pages y sitios a medida: rápidos, claros y pensados para convertir visitas en clientes. Diseñados y construidos por nosotros de punta a punta. Como este que estás viendo.</p>
-            <ul class="qh-list">
-              <li><span class="chev" aria-hidden="true">&lt;</span> Listos en días, no en meses</li>
-              <li><span class="chev" aria-hidden="true">&lt;</span> Rápidos en cualquier celular</li>
-              <li><span class="chev" aria-hidden="true">&lt;</span> Conectados a tus automatizaciones</li>
-            </ul>
-          </article>
-        </div>
-
-        <div class="qh-ej">
-          <p class="qh-ej-title">Por ejemplo, cosas que dejamos funcionando solas:</p>
-          <ul class="qh-ej-grid">
-            <li><span class="chev" aria-hidden="true">&lt;</span> Tu WhatsApp responde consultas las 24 hs</li>
-            <li><span class="chev" aria-hidden="true">&lt;</span> Los turnos se agendan sin ida y vuelta de mensajes</li>
-            <li><span class="chev" aria-hidden="true">&lt;</span> Mandás un audio con un gasto y ya queda registrado</li>
-            <li><span class="chev" aria-hidden="true">&lt;</span> Tus emails se clasifican y responden al instante</li>
-            <li><span class="chev" aria-hidden="true">&lt;</span> Cargás una fila en la planilla y el posteo sale solo</li>
-            <li><span class="chev" aria-hidden="true">&lt;</span> Cada interesado recibe seguimiento sin que te acuerdes</li>
-            <li><span class="chev" aria-hidden="true">&lt;</span> Un resumen de tu día, cada mañana en tu WhatsApp</li>
-            <li><span class="chev" aria-hidden="true">&lt;</span> Presupuestos armados y enviados en el momento</li>
+      <div class="wrap svc-grid">
+        <article class="svc-col">
+          <p class="svc-idx">Automatización</p>
+          <div class="svc-viz svc-viz-flow" aria-hidden="true">
+            <svg viewBox="0 0 300 140" preserveAspectRatio="xMidYMid meet">
+              <g class="vz-wires" fill="none" stroke-width="1.5">
+                <path d="M62 39 C 95 39, 118 70, 150 70"/>
+                <path d="M62 101 C 95 101, 118 70, 150 70"/>
+                <path d="M150 70 C 182 70, 205 39, 238 39"/>
+                <path d="M150 70 C 182 70, 205 101, 238 101"/>
+              </g>
+              <g class="vz-nodes">
+                <g class="vz-node"><rect x="18" y="26" width="44" height="26" rx="4"/><circle cx="30" cy="39" r="3.2" fill="#3FA26C"/></g>
+                <g class="vz-node"><rect x="18" y="88" width="44" height="26" rx="4"/><circle cx="30" cy="101" r="3.2" fill="#7A6FA3"/></g>
+                <g class="vz-node vz-brain"><rect x="128" y="52" width="44" height="36" rx="6"/></g>
+                <g class="vz-node"><rect x="238" y="26" width="44" height="26" rx="4"/><circle cx="250" cy="39" r="3.2" fill="#2E7D53"/></g>
+                <g class="vz-node"><rect x="238" y="88" width="44" height="26" rx="4"/><circle cx="250" cy="101" r="3.2" fill="#4A7BC4"/></g>
+              </g>
+              <circle class="vz-pulse" r="3.6">
+                <animateMotion dur="2.8s" repeatCount="indefinite" calcMode="spline" keyTimes="0;1" keySplines="0.4 0 0.2 1" path="M62 39 C 95 39,118 70,150 70 C 182 70,205 101,238 101"/>
+              </circle>
+            </svg>
+          </div>
+          <h3 class="svc-name">Tus apps, conectadas</h3>
+          <p>Un cliente escribe, y el pedido ya está en tu planilla. Llega un formulario, y la respuesta sale sola. Entra un archivo, y se guarda donde va. Todo pasa en segundos, sin que nadie lo toque.</p>
+          <ul class="svc-tools" aria-label="Herramientas que conectamos">
+            <li class="tool-chip" data-tool="n8"><span class="tool-dot"></span>n8n</li>
+            <li class="tool-chip" data-tool="wa"><span class="tool-dot"></span>WhatsApp</li>
+            <li class="tool-chip" data-tool="ig"><span class="tool-dot"></span>Instagram</li>
+            <li class="tool-chip" data-tool="gm"><span class="tool-dot"></span>Gmail</li>
+            <li class="tool-chip" data-tool="sh"><span class="tool-dot"></span>Google Sheets</li>
+            <li class="tool-chip" data-tool="fo"><span class="tool-dot"></span>Google Forms</li>
+            <li class="tool-chip" data-tool="dr"><span class="tool-dot"></span>Google Drive</li>
+            <li class="tool-chip" data-tool="ca"><span class="tool-dot"></span>Google Calendar</li>
+            <li class="tool-chip" data-tool="no"><span class="tool-dot"></span>Notion</li>
+            <li class="tool-chip" data-tool="mt"><span class="tool-dot"></span>Meta Business</li>
+            <li class="tool-chip" data-tool="dl"><span class="tool-dot"></span>360dialog</li>
+            <li class="tool-chip" data-tool="ai"><span class="tool-dot"></span>GPT-4o</li>
+            <li class="tool-chip" data-tool="wh"><span class="tool-dot"></span>Whisper</li>
           </ul>
+        </article>
+
+        <article class="svc-col">
+          <p class="svc-idx">Sitios web</p>
+          <div class="svc-viz svc-viz-web" aria-hidden="true">
+            <div class="vz-browser">
+              <div class="vz-bar"><i></i><i></i><i></i><span class="vz-url"></span></div>
+              <div class="vz-screen">
+                <div class="vz-block"></div>
+                <div class="vz-ln"></div>
+                <div class="vz-ln s"></div>
+                <div class="vz-row"><span></span><span></span><span></span></div>
+                <div class="vz-load"><b></b></div>
+                <span class="vz-cursor"></span>
+              </div>
+            </div>
+          </div>
+          <h3 class="svc-name">Sitios que trabajan por vos</h3>
+          <p>Landing pages y sitios a medida: rápidos, claros y pensados para convertir visitas en clientes. Diseñados y construidos por nosotros de punta a punta. Como este que estás viendo.</p>
+          <ul class="svc-list">
+            <li><span class="chev" aria-hidden="true">&lt;</span> Listos en días, no en meses</li>
+            <li><span class="chev" aria-hidden="true">&lt;</span> Rápidos en cualquier celular</li>
+            <li><span class="chev" aria-hidden="true">&lt;</span> Conectados a tus automatizaciones</li>
+          </ul>
+        </article>
+      </div>
+
+    </section>
+
+    <!-- ===================== FLUJOS (scroll horizontal fijado) ===================== -->
+    <section class="hflow" id="flujos" aria-label="Flujos que dejamos corriendo solos">
+      <div class="hflow-sticky">
+        <div class="hflow-rail" aria-hidden="true"></div>
+        <div class="wrap hflow-head">
+          <h2 class="hflow-title">Flujos que dejamos corriendo solos.</h2>
         </div>
+        <div class="hflow-viewport">
+          <div class="hflow-track" id="hflow-track">
+            <article class="flow-card">
+              <div class="flow-card-head"><span class="flow-card-kicker mono">Atención</span><span class="flow-card-no">01</span></div>
+              <p class="flow-card-text">Tu WhatsApp responde consultas las 24 hs, sin que estés vos.</p>
+              <div class="flow-card-foot"><span class="flow-card-dots" aria-hidden="true"><i data-t="wa"></i></span></div>
+            </article>
+            <article class="flow-card">
+              <div class="flow-card-head"><span class="flow-card-kicker mono">Agenda</span><span class="flow-card-no">02</span></div>
+              <p class="flow-card-text">Los turnos se agendan solos, sin ida y vuelta de mensajes.</p>
+              <div class="flow-card-foot"><span class="flow-card-dots" aria-hidden="true"><i data-t="wa"></i><i data-t="ca"></i></span></div>
+            </article>
+            <article class="flow-card">
+              <div class="flow-card-head"><span class="flow-card-kicker mono">Registro</span><span class="flow-card-no">03</span></div>
+              <p class="flow-card-text">Mandás un audio con un gasto y ya queda registrado en tu planilla.</p>
+              <div class="flow-card-foot"><span class="flow-card-dots" aria-hidden="true"><i data-t="wh"></i><i data-t="sh"></i></span></div>
+            </article>
+            <article class="flow-card">
+              <div class="flow-card-head"><span class="flow-card-kicker mono">Correo</span><span class="flow-card-no">04</span></div>
+              <p class="flow-card-text">Tus emails se clasifican y responden al instante.</p>
+              <div class="flow-card-foot"><span class="flow-card-dots" aria-hidden="true"><i data-t="gm"></i><i data-t="ai"></i></span></div>
+            </article>
+            <article class="flow-card">
+              <div class="flow-card-head"><span class="flow-card-kicker mono">Contenido</span><span class="flow-card-no">05</span></div>
+              <p class="flow-card-text">Cargás una fila en la planilla y el posteo sale solo.</p>
+              <div class="flow-card-foot"><span class="flow-card-dots" aria-hidden="true"><i data-t="sh"></i><i data-t="ig"></i></span></div>
+            </article>
+            <article class="flow-card">
+              <div class="flow-card-head"><span class="flow-card-kicker mono">Seguimiento</span><span class="flow-card-no">06</span></div>
+              <p class="flow-card-text">Cada interesado recibe seguimiento sin que te tengas que acordar.</p>
+              <div class="flow-card-foot"><span class="flow-card-dots" aria-hidden="true"><i data-t="wa"></i><i data-t="sh"></i></span></div>
+            </article>
+            <article class="flow-card">
+              <div class="flow-card-head"><span class="flow-card-kicker mono">Reportes</span><span class="flow-card-no">07</span></div>
+              <p class="flow-card-text">Un resumen de tu día, cada mañana en tu WhatsApp.</p>
+              <div class="flow-card-foot"><span class="flow-card-dots" aria-hidden="true"><i data-t="ai"></i><i data-t="wa"></i></span></div>
+            </article>
+            <article class="flow-card">
+              <div class="flow-card-head"><span class="flow-card-kicker mono">Ventas</span><span class="flow-card-no">08</span></div>
+              <p class="flow-card-text">Presupuestos armados y enviados en el momento.</p>
+              <div class="flow-card-foot"><span class="flow-card-dots" aria-hidden="true"><i data-t="wa"></i><i data-t="dr"></i></span></div>
+            </article>
+            <div class="hflow-end" aria-hidden="true"></div>
+          </div>
+        </div>
+        <div class="hflow-progress" aria-hidden="true"><span class="hflow-progress-fill" id="hflow-progress-fill"></span></div>
       </div>
     </section>
 
-    <!-- ===================== CÓMO TRABAJAMOS (scroll story) ===================== -->
-    <section class="ct" id="como-trabajamos">
+    <!-- ===================== PROCESO (scroll story) ===================== -->
+    <section class="ct" id="proceso">
       <div class="ct-sticky" id="ct-sticky">
-        <div class="container ct-inner">
-          <p class="sec-label ct-label"><span class="chev" aria-hidden="true">&lt;</span> Cómo trabajamos</p>
-
+        <div class="ct-inner">
+          <p class="eyebrow mono ct-eyebrow">02 / Proceso</p>
           <div class="ct-layout">
             <div class="ct-left" aria-hidden="true">
               <div class="ct-num" id="ct-num">01</div>
@@ -156,14 +259,17 @@
 
             <div class="ct-steps">
               <article class="ct-step" data-step="0">
+                <span class="mono">Paso 01 — Disparador</span>
                 <h3>Contanos qué te quita tiempo</h3>
                 <p>Una charla corta, sin tecnicismos. Nos contás qué hacés todos los días a mano — responder mensajes, pasar datos, mandar recordatorios — y detectamos qué se puede hacer solo.</p>
               </article>
               <article class="ct-step" data-step="1">
+                <span class="mono">Paso 02 — Conexión</span>
                 <h3>Conectamos tus herramientas</h3>
-                <p>Armamos el sistema con las apps que ya usás. No cambiás de programa ni aprendés nada nuevo: tu WhatsApp sigue siendo tu WhatsApp, tu planilla sigue siendo tu planilla.</p>
+                <p>Armamos el flujo con las apps que ya usás. No cambiás de programa ni aprendés nada nuevo: tu WhatsApp sigue siendo tu WhatsApp, tu planilla sigue siendo tu planilla.</p>
               </article>
               <article class="ct-step" data-step="2">
+                <span class="mono">Paso 03 — En marcha</span>
                 <h3>Todo empieza a andar solo</h3>
                 <p>Lo probamos con casos reales, lo dejamos funcionando y nos quedamos cerca. Vos ves los resultados; nosotros nos ocupamos de que nunca se detenga.</p>
               </article>
@@ -175,120 +281,166 @@
 
     <!-- ===================== DEMO ===================== -->
     <section class="demo section-paper" id="demo">
-      <div class="container">
-        <p class="sec-label"><span class="chev" aria-hidden="true">&lt;</span> Probalo vos</p>
+      <div class="wrap sec-head">
+        <p class="eyebrow mono">03 / Demo</p>
         <h2 class="demo-title">Este es Redi.<br>Atiende un negocio que funciona solo.</h2>
         <p class="demo-lead">Redi es nuestro asistente. Elegí una consulta — como si fueras un cliente — y mirá lo que pasa del otro lado en el mismo segundo.</p>
+      </div>
 
-        <div class="demo-grid">
-          <!-- Chat -->
-          <div class="phone" role="group" aria-label="Chat de demostración">
-            <div class="phone-top">
-              <svg class="phone-mark" viewBox="0 0 1200 1329" aria-hidden="true">
-                <path d="M728 120 L283 120 L121 339 L120 1208 L361 1208 L361 341 L574 331 Z"/>
-                <path d="M814 120 L432 647 L817 1208 L1079 1208 L695 652 L1072 120 Z"/>
-              </svg>
-              <div class="phone-top-txt">
-                <strong>Redi · Asistente de REDLABS</strong>
-                <span><i class="online-dot" aria-hidden="true"></i> responde al instante</span>
-              </div>
-            </div>
-            <div class="chat" id="chat-log" aria-live="polite" aria-label="Conversación"></div>
-            <div class="chat-suggestions" id="chat-suggestions" aria-label="Opciones para probar a Redi">
-              <button class="sug" type="button" data-msg="Quiero pedir un turno para el jueves">Pedir un turno</button>
-              <button class="sug" type="button" data-msg="¿Cuánto sale el servicio?">Preguntar precio</button>
-              <button class="sug" type="button" data-msg="Quiero hacer un pedido">Hacer un pedido</button>
-              <button class="sug" type="button" data-msg="¿Qué horarios tienen?">Ver horarios</button>
-            </div>
-            <div class="chat-input" aria-hidden="true">
-              <input type="text" placeholder="Escribí un mensaje…" disabled tabindex="-1" />
-              <span class="chat-send">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12 L21 3 L15 12 L21 21 Z" /></svg>
-              </span>
+      <div class="wrap demo-grid">
+        <!-- Chat -->
+        <div class="phone" role="group" aria-label="Chat de demostración">
+          <div class="phone-top">
+            <svg class="phone-mark" viewBox="0 0 1200 1329" aria-hidden="true">
+              <path d="M728 120 L283 120 L121 339 L120 1208 L361 1208 L361 341 L574 331 Z"/>
+              <path d="M814 120 L432 647 L817 1208 L1079 1208 L695 652 L1072 120 Z"/>
+            </svg>
+            <div class="phone-top-txt">
+              <strong>Redi · Asistente de REDLABS</strong>
+              <span><i class="online-dot" aria-hidden="true"></i> responde al instante</span>
             </div>
           </div>
-
-          <!-- Backstage -->
-          <div class="backstage" aria-label="Lo que pasa detrás de escena">
-            <p class="backstage-title">Lo que pasa detrás, en el mismo segundo</p>
-            <ol class="backstage-feed" id="backstage-feed" aria-live="polite"></ol>
-            <div class="mini-sheet" aria-label="Tu planilla, actualizada sola">
-              <div class="mini-sheet-bar"><span class="mini-sheet-dot"></span> Tu planilla</div>
-              <table>
-                <thead>
-                  <tr><th>Hora</th><th>Cliente</th><th>Motivo</th><th>Estado</th></tr>
-                </thead>
-                <tbody id="sheet-body">
-                  <tr class="sheet-row-old"><td>09:12</td><td>Cliente</td><td>Consulta</td><td><span class="tag-done">Resuelto</span></td></tr>
-                </tbody>
-              </table>
-            </div>
-            <p class="backstage-note">Nadie tocó nada. Así se ve una tarea que dejó de ser tuya.</p>
+          <div class="chat" id="chat-log" aria-live="polite" aria-label="Conversación"></div>
+          <div class="chat-suggestions" id="chat-suggestions" aria-label="Opciones para probar a Redi">
+            <button class="sug" type="button" data-msg="Quiero pedir un turno para el jueves">Pedir un turno</button>
+            <button class="sug" type="button" data-msg="¿Cuánto sale el servicio?">Preguntar precio</button>
+            <button class="sug" type="button" data-msg="Quiero hacer un pedido">Hacer un pedido</button>
+            <button class="sug" type="button" data-msg="¿Qué horarios tienen?">Ver horarios</button>
+          </div>
+          <div class="chat-input" aria-hidden="true">
+            <input type="text" placeholder="Escribí un mensaje…" disabled tabindex="-1" />
+            <span class="chat-send">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12 L21 3 L15 12 L21 21 Z" /></svg>
+            </span>
           </div>
         </div>
+
+        <!-- Backstage -->
+        <div class="backstage" aria-label="Lo que pasa detrás de escena">
+          <p class="backstage-title">Lo que pasa detrás, en el mismo segundo</p>
+          <ol class="backstage-feed" id="backstage-feed" aria-live="polite"></ol>
+          <div class="mini-sheet" aria-label="Tu planilla, actualizada sola">
+            <div class="mini-sheet-bar"><span class="mini-sheet-dot"></span> Tu planilla</div>
+            <table>
+              <thead>
+                <tr><th>Hora</th><th>Cliente</th><th>Motivo</th><th>Estado</th></tr>
+              </thead>
+              <tbody id="sheet-body">
+                <tr class="sheet-row-old"><td>09:12</td><td>Cliente</td><td>Consulta</td><td><span class="tag-done">Resuelto</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="backstage-note">Nadie tocó nada. Así se ve una tarea que dejó de ser tuya.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== FAQ ===================== -->
+    <section class="faq section-dark" id="faq">
+      <div class="wrap sec-head">
+        <p class="eyebrow mono">04 / Preguntas</p>
+        <h2 class="faq-title">Lo que se suele preguntar.</h2>
+      </div>
+      <div class="wrap faq-list">
+        <details class="faq-item">
+          <summary>¿Cuánto tardan en entregar?<span class="faq-plus" aria-hidden="true"></span></summary>
+          <div class="faq-a"><p>Tanto las automatizaciones como las páginas web suelen estar listas en pocos días, según la complejidad. En todos los casos lo charlamos antes y te confirmamos una fecha de entrega.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>Para automatizar, ¿tengo que cambiar las apps que uso?<span class="faq-plus" aria-hidden="true"></span></summary>
+          <div class="faq-a"><p>No. Trabajamos con lo que ya usás: tu WhatsApp sigue siendo tu WhatsApp y tu planilla sigue siendo tu planilla. Nosotros solo las conectamos entre sí.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>¿Puedo pedir solo una página web, o solo una automatización?<span class="faq-plus" aria-hidden="true"></span></summary>
+          <div class="faq-a"><p>Sí. Son dos servicios distintos que podés combinar o pedir por separado: solo un flujo de automatización (sin página web) o solo una página web (sin automatizar nada). Y si ya tenés un sitio, también lo mejoramos.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>¿Las páginas se ven bien en celulares y tablets?<span class="faq-plus" aria-hidden="true"></span></summary>
+          <div class="faq-a"><p>Siempre. Todos nuestros sitios son responsive: se adaptan a celulares, tablets y computadoras. Los hacemos de todo tipo — simples o con movimiento — y ajustados a tu presupuesto.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>¿Cuánto cuesta?<span class="faq-plus" aria-hidden="true"></span></summary>
+          <div class="faq-a"><p>Cada proyecto es distinto, así que armamos un presupuesto a medida. Escribinos y en menos de 24 horas te decimos qué se puede hacer y cuánto sale, sin compromiso.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>¿Y si algo se rompe o deja de andar?<span class="faq-plus" aria-hidden="true"></span></summary>
+          <div class="faq-a"><p>Nos quedamos cerca: monitoreamos los flujos y los mantenemos funcionando. Si algo falla, lo resolvemos nosotros — vos ni te enterás.</p></div>
+        </details>
       </div>
     </section>
 
     <!-- ===================== CTA FINAL ===================== -->
     <section class="cta section-dark" id="contacto">
-      <div class="container cta-inner">
+      <div class="cta-inner">
         <div class="cta-mark" id="cta-mark" aria-hidden="true">
           <svg viewBox="0 0 1200 1329">
             <path class="cta-piece cta-piece-r" d="M728 120 L283 120 L121 339 L120 1208 L361 1208 L361 341 L574 331 Z"/>
             <path class="cta-piece cta-piece-chev" d="M814 120 L432 647 L817 1208 L1079 1208 L695 652 L1072 120 Z"/>
           </svg>
         </div>
-        <h2 class="cta-title">Tu negocio tiene tareas<br>que ya no deberías hacer vos.</h2>
+        <h2 class="cta-title">Hay tareas que ya no<br><em>deberías hacer vos.</em></h2>
         <p class="cta-sub">Contanos cuáles. En menos de 24 horas te decimos qué se puede automatizar y cómo.</p>
         <div class="cta-actions">
-          <a href="https://wa.me/5492216234812" target="_blank" rel="noopener" class="btn btn-primary btn-big">Escribinos por WhatsApp</a>
-        </div>
-
-        <div class="cta-form-wrap">
-          <p class="cta-form-sep"><span class="chev" aria-hidden="true">&lt;</span> ¿Preferís que te escribamos nosotros? Dejanos tu consulta:</p>
-          <form class="cta-form" id="contact-form" action="https://formsubmit.co/somosredlabs@gmail.com" method="POST">
-            <input type="hidden" name="_subject" value="Nueva consulta desde la web de REDLABS" />
-            <input type="hidden" name="_captcha" value="false" />
-            <input type="hidden" name="_template" value="table" />
-            <div class="cta-form-row">
-              <label>Tu nombre
-                <input type="text" name="Nombre" required maxlength="80" autocomplete="name" placeholder="¿Cómo te llamás?" />
-              </label>
-              <label>Tu mail o WhatsApp
-                <input type="text" name="Contacto" required maxlength="120" autocomplete="email" placeholder="Para responderte" />
-              </label>
-            </div>
-            <label>Tu consulta
-              <textarea name="Mensaje" required rows="4" maxlength="1000" placeholder="Contanos qué tareas te gustaría sacarte de encima, o qué sitio web necesitás."></textarea>
-            </label>
-            <button class="btn btn-primary" type="submit">Enviar consulta</button>
-            <p class="cta-form-status" id="form-status" role="status" aria-live="polite"></p>
-          </form>
+          <a href="https://wa.me/5492216234812" target="_blank" rel="noopener" class="btn btn-primary">Escribinos por WhatsApp</a>
         </div>
       </div>
     </section>
 
   </main>
 
-  <!-- ===================== FOOTER ===================== -->
+  <!-- ===================== FOOTER (form | marca) ===================== -->
   <footer class="footer">
-    <div class="container footer-inner">
-      <a href="#inicio" class="footer-logo" aria-label="REDLABS — volver arriba">
-        <svg class="nav-mark" viewBox="0 0 1200 1329" aria-hidden="true">
-          <path d="M728 120 L283 120 L121 339 L120 1208 L361 1208 L361 341 L574 331 Z"/>
-          <path d="M814 120 L432 647 L817 1208 L1079 1208 L695 652 L1072 120 Z"/>
-        </svg>
-        <span class="nav-word">REDLABS</span>
-      </a>
-      <p class="footer-tag">Automatización con IA &amp; sitios a medida</p>
-      <nav class="footer-links" aria-label="Contacto">
-        <a href="https://wa.me/5492216234812" target="_blank" rel="noopener">WhatsApp</a>
-        <a href="https://instagram.com/somosredlabs" target="_blank" rel="noopener">Instagram</a>
-        <a href="mailto:somosredlabs@gmail.com">somosredlabs@gmail.com</a>
-      </nav>
-      <p class="footer-legal">© 2026 REDLABS</p>
+    <div class="footer-grid">
+      <div class="footer-col footer-form-col">
+        <p class="footer-head mono">Dejanos tu consulta</p>
+        <form class="cta-form" id="contact-form" action="https://formsubmit.co/somosredlabs@gmail.com" method="POST">
+          <input type="hidden" name="_subject" value="Nueva consulta desde la web de REDLABS" />
+          <input type="hidden" name="_captcha" value="false" />
+          <input type="hidden" name="_template" value="table" />
+          <div class="cta-form-row">
+            <label>Tu nombre
+              <input type="text" name="Nombre" required maxlength="80" autocomplete="name" placeholder="¿Cómo te llamás?" />
+            </label>
+            <label>Tu mail o WhatsApp
+              <input type="text" name="Contacto" required maxlength="120" autocomplete="email" placeholder="Para responderte" />
+            </label>
+          </div>
+          <label>Tu consulta
+            <textarea name="Mensaje" required rows="4" maxlength="1000" placeholder="Contanos qué tareas te gustaría sacarte de encima, o qué sitio web necesitás."></textarea>
+          </label>
+          <button class="btn btn-primary" type="submit">Enviar consulta</button>
+          <p class="cta-form-status" id="form-status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+
+      <div class="footer-col footer-info-col">
+        <a href="#inicio" class="footer-logo" aria-label="REDLABS — volver arriba">
+          <svg class="nav-mark" viewBox="0 0 1200 1329" aria-hidden="true">
+            <path d="M728 120 L283 120 L121 339 L120 1208 L361 1208 L361 341 L574 331 Z"/>
+            <path d="M814 120 L432 647 L817 1208 L1079 1208 L695 652 L1072 120 Z"/>
+          </svg>
+          <span class="nav-word">REDLABS</span>
+        </a>
+        <p class="footer-tag">Automatización con IA &amp; sitios web a medida. Menos tareas repetitivas, más negocio funcionando solo.</p>
+        <nav class="footer-contact" aria-label="Contacto">
+          <a href="https://wa.me/5492216234812" target="_blank" rel="noopener" data-k="WhatsApp">+54 9 221 623 4812</a>
+          <a href="https://instagram.com/somosredlabs" target="_blank" rel="noopener" data-k="Instagram">@somosredlabs</a>
+          <a href="mailto:somosredlabs@gmail.com" data-k="Mail">somosredlabs@gmail.com</a>
+        </nav>
+      </div>
     </div>
   </footer>
+
+  <!-- footer chiquito, de esquina a esquina -->
+  <div class="subfooter">
+    <span class="mono">© 2026 REDLABS</span>
+    <span class="mono">Hecho por nosotros, de punta a punta.</span>
+  </div>
+
+  <!-- WhatsApp flotante: acompaña todo el scroll -->
+  <a class="wa-fab" id="wa-fab" href="https://wa.me/5492216234812" target="_blank" rel="noopener" aria-label="Escribinos por WhatsApp">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 1.67c2.2 0 4.27.86 5.82 2.42a8.19 8.19 0 0 1 2.42 5.82c0 4.54-3.7 8.24-8.25 8.24-1.48 0-2.93-.4-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24zm4.52 10.15c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.13-.16.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.51.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43-.14-.01-.31-.01-.47-.01-.17 0-.43.06-.66.31-.23.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.24 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.17-.47-.29z"/></svg>
+  </a>
 
   <script type="module" src="main.js"></script>
 </body>
