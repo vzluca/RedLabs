@@ -67,7 +67,9 @@ export function initHero(container) {
   spin.add(pieceR, pieceC);
   const mark = new THREE.Group();            // posición/flotación
   mark.add(spin);
-  const base = mobile ? { x: 0, y: 2.7, s: .86 } : { x: 3.55, y: .05, s: 1.12 };
+  // desktop: el canvas ocupa la mitad derecha (ver CSS), así que el objeto va
+  // centrado en x=0 y flota justo en el medio de ese 50%. Mismo tamaño de antes.
+  const base = mobile ? { x: 0, y: 2.7, s: .86 } : { x: 0, y: .05, s: 1.12 };
   mark.position.set(base.x, base.y, 0);
   mark.scale.setScalar(base.s);
   scene.add(mark);
