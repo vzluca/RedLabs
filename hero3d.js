@@ -67,7 +67,7 @@ export function initHero(container) {
   spin.add(pieceR, pieceC);
   const mark = new THREE.Group();            // posición/flotación
   mark.add(spin);
-  const base = mobile ? { x: 0, y: 2.7, s: .86 } : { x: 2.7, y: .05, s: 1.12 };
+  const base = mobile ? { x: 0, y: 2.7, s: .86 } : { x: 3.55, y: .05, s: 1.12 };
   mark.position.set(base.x, base.y, 0);
   mark.scale.setScalar(base.s);
   scene.add(mark);
