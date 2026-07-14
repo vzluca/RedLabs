@@ -289,35 +289,23 @@ new IntersectionObserver((entries, obs) => {
 const cform = document.getElementById('contact-form');
 if (cform) {
   const status = document.getElementById('form-status');
-  cform.addEventListener('submit', async e => {
-    e.preventDefault();
+  const nextField = document.getElementById('form-next');
+  // FormSubmit hace un POST nativo y vuelve a ESTA misma URL (preview o prod)
+  // con ?enviado=1. Es más robusto que el AJAX: la activación de FormSubmit
+  // queda visible y el mail llega sin depender de fetch/CORS.
+  if (nextField) nextField.value = location.origin + location.pathname + '?enviado=1';
+
+  // al volver del envío, mostramos el éxito y limpiamos la URL
+  if (new URLSearchParams(location.search).has('enviado')) {
+    status.textContent = '¡Listo! Nos llegó tu consulta. Te respondemos en menos de 24 horas.';
+    status.classList.add('ok');
+    history.replaceState(null, '', location.pathname + '#contacto');
+    requestAnimationFrame(() => document.getElementById('contacto')?.scrollIntoView());
+  }
+
+  cform.addEventListener('submit', () => {
     const btn = cform.querySelector('button[type="submit"]');
-    const orig = btn.textContent;
-    btn.disabled = true;
     btn.textContent = 'Enviando…';
-    status.textContent = '';
-    status.classList.remove('ok');
-    try {
-      const r = await fetch('https://formsubmit.co/ajax/somosredlabs@gmail.com', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify(Object.fromEntries(new FormData(cform).entries())),
-      });
-      const data = await r.json().catch(() => ({}));
-      if (r.ok && String(data.success) === 'true') {
-        cform.reset();
-        status.textContent = '¡Listo! Nos llegó tu consulta. Te respondemos en menos de 24 horas.';
-        status.classList.add('ok');
-      } else {
-        throw new Error(data.message || 'send failed');
-      }
-    } catch {
-      // no navegamos afuera: mostramos una salida clara por WhatsApp
-      status.textContent = 'No pudimos enviarlo ahora. Escribinos por WhatsApp al +54 9 221 623 4812 y lo resolvemos al toque.';
-    } finally {
-      btn.disabled = false;
-      btn.textContent = orig;
-    }
   });
 }
 
@@ -379,7 +367,7 @@ function supportsWebGL() {
 if (reduced || !supportsWebGL()) {
   hero.classList.add('no3d');
 } else {
-  import('./hero3d.js?v=20260714c')
+  import('./hero3d.js?v=20260714d')
     .then(m => m.initHero(document.getElementById('hero-canvas')))
     .catch(() => hero.classList.add('no3d'));
 }
