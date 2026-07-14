@@ -203,5 +203,5 @@ export function initHero(container) {
   setTimeout(() => dispatchEvent(new CustomEvent('rl:heroready')), 900);
   rafId = requestAnimationFrame(tick);
 
-  addEventListener('pagehide', () => { clearInterval(boostTimer); cancelAnimationFrame(rafId); renderer.dispose(); }, { once: true });
+  addEventListener('pagehide', () => { cancelAnimationFrame(rafId); renderer.dispose(); }, { once: true });
 }

@@ -671,7 +671,8 @@ main > section, .footer { scroll-margin-top: var(--nav-h); }
   .scroll-progress { display: none; }
 }
 @media (max-width: 900px) {
-  .svc-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .svc-grid { grid-template-columns: 1fr; gap: 3.5rem; }
+  .svc-viz { min-height: 0; margin-bottom: 1.4rem; }   /* apilado: sin reserva de alto */
   .demo { min-height: auto; }
   .demo-grid { grid-template-columns: 1fr; height: auto; }
   .phone { max-width: 440px; height: auto; }
