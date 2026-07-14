@@ -279,7 +279,7 @@ new IntersectionObserver((entries, obs) => {
   if (!entries[0].isIntersecting || greeted) return;
   greeted = true;
   obs.disconnect();
-  setTimeout(() => addMsg('¡Hola! Soy Redi, el asistente de REDLABS. Estoy acá para automatizar las tareas repetitivas de tu negocio.', 'bot'), reduced ? 0 : 500);
+  setTimeout(() => addMsg('¡Hola! Soy Redi, el asistente de REDLABS.', 'bot'), reduced ? 0 : 500);
   greetTimers.push(setTimeout(() => addMsg('Elegí una opción acá abajo, como si fueras un cliente, y fijate lo que pasa al lado 👇', 'bot'), reduced ? 0 : 1600));
 }, { threshold: .35 }).observe(chatLog);
 
@@ -303,12 +303,17 @@ if (cform) {
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
         body: JSON.stringify(Object.fromEntries(new FormData(cform).entries())),
       });
-      if (!r.ok) throw new Error('send failed');
-      cform.reset();
-      status.textContent = '¡Listo! Nos llegó tu consulta. Te respondemos en menos de 24 horas.';
-      status.classList.add('ok');
+      const data = await r.json().catch(() => ({}));
+      if (r.ok && String(data.success) === 'true') {
+        cform.reset();
+        status.textContent = '¡Listo! Nos llegó tu consulta. Te respondemos en menos de 24 horas.';
+        status.classList.add('ok');
+      } else {
+        throw new Error(data.message || 'send failed');
+      }
     } catch {
-      cform.submit();
+      // no navegamos afuera: mostramos una salida clara por WhatsApp
+      status.textContent = 'No pudimos enviarlo ahora. Escribinos por WhatsApp al +54 9 221 623 4812 y lo resolvemos al toque.';
     } finally {
       btn.disabled = false;
       btn.textContent = orig;
@@ -374,7 +379,7 @@ function supportsWebGL() {
 if (reduced || !supportsWebGL()) {
   hero.classList.add('no3d');
 } else {
-  import('./hero3d.js?v=20260714')
+  import('./hero3d.js?v=20260714b')
     .then(m => m.initHero(document.getElementById('hero-canvas')))
     .catch(() => hero.classList.add('no3d'));
 }
