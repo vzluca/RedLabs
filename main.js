@@ -374,7 +374,7 @@ function supportsWebGL() {
 if (reduced || !supportsWebGL()) {
   hero.classList.add('no3d');
 } else {
-  import('./hero3d.js')
+  import('./hero3d.js?v=20260714')
     .then(m => m.initHero(document.getElementById('hero-canvas')))
     .catch(() => hero.classList.add('no3d'));
 }
