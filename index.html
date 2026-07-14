@@ -18,7 +18,7 @@
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
   <link rel="preload" href="assets/fonts/instrument-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="assets/fonts/instrument-sans-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="stylesheet" href="style.css?v=20260714d" />
+  <link rel="stylesheet" href="style.css?v=20260714e" />
 </head>
 <body>
 
@@ -365,11 +365,11 @@
     <div class="footer-grid">
       <div class="footer-col footer-form-col">
         <p class="footer-head mono">Dejanos tu consulta</p>
-        <form class="cta-form" id="contact-form" action="https://formsubmit.co/somosredlabs@gmail.com" method="POST">
-          <input type="hidden" name="_subject" value="Nueva consulta desde la web de REDLABS" />
-          <input type="hidden" name="_captcha" value="false" />
-          <input type="hidden" name="_template" value="table" />
-          <input type="hidden" name="_next" id="form-next" value="https://redlabs.digital/?enviado=1" />
+        <form class="cta-form" id="contact-form" action="https://api.web3forms.com/submit" method="POST">
+          <input type="hidden" name="access_key" value="dea7a70c-8e5c-451d-8b2c-656467a12f38" />
+          <input type="hidden" name="subject" value="Nueva consulta desde la web de REDLABS" />
+          <input type="hidden" name="from_name" value="Web REDLABS" />
+          <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true" />
           <div class="cta-form-row">
             <label>Tu nombre
               <input type="text" name="Nombre" required maxlength="80" autocomplete="name" placeholder="¿Cómo te llamás?" />
@@ -416,6 +416,6 @@
     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 1.67c2.2 0 4.27.86 5.82 2.42a8.19 8.19 0 0 1 2.42 5.82c0 4.54-3.7 8.24-8.25 8.24-1.48 0-2.93-.4-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24zm4.52 10.15c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.13-.16.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.51.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43-.14-.01-.31-.01-.47-.01-.17 0-.43.06-.66.31-.23.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.24 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.17-.47-.29z"/></svg>
   </a>
 
-  <script type="module" src="main.js?v=20260714d"></script>
+  <script type="module" src="main.js?v=20260714e"></script>
 </body>
 </html>
