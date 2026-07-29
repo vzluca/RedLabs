@@ -180,22 +180,24 @@ input, textarea { font: inherit; }
 
 .mobile-menu {
   position: fixed; inset: 0; z-index: 125; background: var(--ink-deep);
-  display: flex; flex-direction: column; justify-content: center; gap: .6rem;
-  padding-inline: var(--pad-x); opacity: 0; pointer-events: none; transition: opacity .35s ease;
+  display: flex; flex-direction: column; justify-content: center; gap: .35rem;
+  padding: calc(var(--nav-h) + 1.4rem) var(--pad-x) 2rem;
+  opacity: 0; pointer-events: none; transition: opacity .35s ease;
 }
 .mobile-menu.open { opacity: 1; pointer-events: auto; }
 .mobile-link {
-  font-family: var(--f-head); font-weight: 400; font-size: clamp(2rem, 9vw, 2.8rem); letter-spacing: -.03em;
-  padding: .22em 0; transform: translateX(-16px); opacity: 0;
+  font-family: var(--f-head); font-weight: 400; font-size: clamp(1.5rem, 6.2vw, 2.1rem); letter-spacing: -.03em;
+  padding: .16em 0; transform: translateX(-16px); opacity: 0;
   transition: transform .5s var(--spring), opacity .35s ease;
 }
-.mobile-link .mono { display: block; font-size: .6rem; color: var(--tx-d-dim); margin-bottom: -.2em; }
+.mobile-link .mono { display: block; font-size: .58rem; color: var(--tx-d-dim); margin-bottom: -.15em; }
 .mobile-menu.open .mobile-link { transform: none; opacity: 1; }
 .mobile-menu.open .mobile-link:nth-child(2) { transition-delay: .05s; }
 .mobile-menu.open .mobile-link:nth-child(3) { transition-delay: .10s; }
 .mobile-menu.open .mobile-link:nth-child(4) { transition-delay: .15s; }
 .mobile-menu.open .mobile-link:nth-child(5) { transition-delay: .20s; }
 .mobile-menu.open .mobile-link:nth-child(6) { transition-delay: .25s; }
+.mobile-menu.open .mobile-link:nth-child(7) { transition-delay: .30s; }
 .mobile-link-cta { color: var(--red); }
 
 /* =============================================================
