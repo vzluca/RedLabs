@@ -624,7 +624,8 @@ main > section, .footer { scroll-margin-top: var(--nav-h); }
 .mini-sheet th:first-child, .mini-sheet td:first-child { width: 18%; }
 .mini-sheet th:last-child, .mini-sheet td:last-child { text-align: right; padding-right: 1.1em; width: 26%; }
 .mini-sheet th { font-family: var(--f-mono); font-weight: 500; font-size: .62rem; letter-spacing: .1em; text-transform: uppercase; color: var(--tx-l-mut); }
-.mini-sheet td { font-variant-numeric: tabular-nums; }
+.mini-sheet td { font-variant-numeric: tabular-nums; padding-block: .8em; }
+.mini-sheet tr:last-child td { border-bottom: none; }   /* aire abajo: sin línea pegada al borde */
 .sheet-row-old { color: var(--tx-l-mut); }
 .sheet-row-new { animation: rowIn .8s var(--out-expo); }
 @keyframes rowIn { 0% { background: rgba(238,43,36,.14); } 100% { background: transparent; } }
