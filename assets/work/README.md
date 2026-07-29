@@ -15,7 +15,7 @@ Opcional (imagen que se ve mientras carga el video, mismo nombre pero .jpg):
 | `fenix.jpg`  | Fénix Villa Elisa  |
 
 ## Cómo grabar cada clip
-- Ventana del navegador a ~**1280×800** (relación 16:10, igual que el marco).
+- Resolución **1948×1050** (es la relación exacta del marco, ~1.85:1).
 - **Scroll lento y suave** de arriba a abajo, **8–12 segundos**.
 - **Sin audio** (el video va muteado igual).
 - Sin cursor si se puede.
