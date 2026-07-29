@@ -80,6 +80,19 @@ if (!reduced) {
   targets.forEach(el => io.observe(el));
 }
 
+/* ---------- TRABAJOS — los videos se reproducen solo cuando están en pantalla ---------- */
+const workVideos = document.querySelectorAll('.work-video');
+if (workVideos.length && !reduced && 'IntersectionObserver' in window) {
+  const vio = new IntersectionObserver(es => {
+    es.forEach(en => {
+      const v = en.target;
+      if (en.isIntersecting) { const p = v.play(); if (p) p.catch(() => {}); }
+      else v.pause();
+    });
+  }, { threshold: .4 });
+  workVideos.forEach(v => vio.observe(v));
+}
+
 /* ---------- FLUJOS — scroll horizontal fijado (el scroll vertical avanza en horizontal) ---------- */
 const hflow = document.getElementById('flujos');
 const hTrack = document.getElementById('hflow-track');
@@ -379,7 +392,7 @@ function supportsWebGL() {
 if (reduced || !supportsWebGL()) {
   hero.classList.add('no3d');
 } else {
-  import('./hero3d.js?v=20260714e')
+  import('./hero3d.js?v=20260714f')
     .then(m => m.initHero(document.getElementById('hero-canvas')))
     .catch(() => hero.classList.add('no3d'));
 }
