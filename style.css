@@ -617,9 +617,12 @@ main > section, .footer { scroll-margin-top: var(--nav-h); }
 .mini-sheet { background: var(--paper); color: var(--tx-l); border: 1px solid var(--hair-l); overflow: hidden; }
 .mini-sheet-bar { display: flex; align-items: center; gap: .5em; font-family: var(--f-mono); font-size: .64rem; letter-spacing: .1em; text-transform: uppercase; padding: .6em .9em; border-bottom: 1px solid var(--hair-l); color: var(--tx-l-mut); }
 .mini-sheet-dot { width: 8px; height: 8px; background: #2E7D53; }
-.mini-sheet table { width: 100%; border-collapse: collapse; font-size: var(--t-small); }
-.mini-sheet th, .mini-sheet td { text-align: left; padding: .5em .9em; border-bottom: 1px solid rgba(22,17,15,.08); white-space: nowrap; }
-.mini-sheet th:last-child, .mini-sheet td:last-child { padding-right: 1.5em; }
+/* table-layout: fixed → los anchos los fija la tabla, no la fuente, así se ve
+   igual en Windows (Consolas) y Mac (SF Mono) sin desbordar el recuadro */
+.mini-sheet table { width: 100%; border-collapse: collapse; table-layout: fixed; font-size: var(--t-small); }
+.mini-sheet th, .mini-sheet td { text-align: left; padding: .5em .9em; border-bottom: 1px solid rgba(22,17,15,.08); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.mini-sheet th:first-child, .mini-sheet td:first-child { width: 18%; }
+.mini-sheet th:last-child, .mini-sheet td:last-child { text-align: right; padding-right: 1.1em; width: 26%; }
 .mini-sheet th { font-family: var(--f-mono); font-weight: 500; font-size: .62rem; letter-spacing: .1em; text-transform: uppercase; color: var(--tx-l-mut); }
 .mini-sheet td { font-variant-numeric: tabular-nums; }
 .sheet-row-old { color: var(--tx-l-mut); }
