@@ -152,7 +152,9 @@ if (!reduced && ctPath) {
     const p = clamp(-rect.top / total, 0, 1);
 
     const mix = c0.map((c, i) => Math.round(c + (c1[i] - c) * p));
-    ctSticky.style.backgroundColor = `rgb(${mix.join(',')})`;
+    // pintamos también la sección: en mobile el sticky (svh) es más corto que
+    // el viewport real, y sin esto se veía una franja negra debajo
+    ct.style.backgroundColor = ctSticky.style.backgroundColor = `rgb(${mix.join(',')})`;
     ctSticky.classList.toggle('light', p > .42);
 
     ctPath.style.strokeDashoffset = pathLen * (1 - p);
@@ -176,7 +178,7 @@ if (!reduced && ctPath) {
   update();
 } else {
   ctSteps.forEach(s => s.classList.add('active'));
-  ctSticky.style.backgroundColor = '#FAF9F7';
+  ct.style.backgroundColor = ctSticky.style.backgroundColor = '#FAF9F7';
   ctSticky.classList.add('light');
 }
 
@@ -392,7 +394,7 @@ function supportsWebGL() {
 if (reduced || !supportsWebGL()) {
   hero.classList.add('no3d');
 } else {
-  import('./hero3d.js?v=20260714i')
+  import('./hero3d.js?v=20260714j')
     .then(m => m.initHero(document.getElementById('hero-canvas')))
     .catch(() => hero.classList.add('no3d'));
 }
